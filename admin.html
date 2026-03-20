@@ -56,12 +56,11 @@
                     <span class="text-[9px] border border-stone-200 px-2 py-1 ml-4 tracking-widest text-stone-400 uppercase font-bold">Admin</span>
                 </div>
                 <div class="hidden md:flex items-center space-x-8 text-[10px] uppercase tracking-[0.3em] font-bold">
-                    <a href="index.html" class="hover:text-[#d4af37] transition-colors">View Showroom</a>
+                    <a href="index.html" class="hover:text-[#d4af37] transition-colors">Showroom</a>
                     <div class="h-4 w-[1px] bg-stone-300"></div>
-                    <span id="status-indicator" class="flex items-center gap-2 text-stone-400">
-                        <span class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
-                        Encrypted Session
-                    </span>
+                    <button onclick="logout()" class="text-stone-400 hover:text-red-500 transition-colors flex items-center gap-2">
+                        <i class="fa-solid fa-power-off"></i> Sign Out
+                    </button>
                 </div>
 
                 <!-- Hamburger -->
@@ -79,8 +78,7 @@
         </button>
         <span class="text-2xl font-semibold tracking-[0.3em] uppercase serif italic mb-4">Elite<span class="text-[#d4af37] not-italic">Homespace</span></span>
         <a href="index.html" class="text-sm uppercase tracking-[0.3em] font-bold hover:text-[#d4af37]">Showroom</a>
-        <a href="contact.html" class="text-sm uppercase tracking-[0.3em] font-bold hover:text-[#d4af37]">Contact</a>
-        <a href="admin.html" class="text-sm uppercase tracking-[0.3em] font-bold text-[#d4af37]">Admin Access</a>
+        <button onclick="logout()" class="text-sm uppercase tracking-[0.3em] font-bold text-red-500">Sign Out</button>
     </div>
             </div>
         </div>
@@ -175,7 +173,7 @@
     <!-- Firebase SDK -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, collection, onSnapshot, addDoc, deleteDoc, doc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
         const firebaseConfig = {
@@ -198,13 +196,29 @@
             document.body.classList.toggle('overflow-hidden');
         };
 
+        window.logout = async () => {
+            try {
+                await signOut(auth);
+                window.location.href = 'login.html';
+            } catch (err) {
+                console.error("Sign out error", err);
+            }
+        };
+
+        // Auth Guard
+        onAuthStateChanged(auth, (user) => {
+            if (!user) {
+                window.location.href = 'login.html';
+            } else {
+                initAdmin();
+            }
+        });
+
         let compressedBase64Array = [];
 
         // Initialization
         async function initAdmin() {
             try {
-                const userCredential = await signInAnonymously(auth);
-                console.log("Authenticated as:", userCredential.user.uid);
                 const housesRef = collection(db, 'artifacts', appId, 'public', 'data', 'houses');
                 
                 onSnapshot(housesRef, (snapshot) => {
