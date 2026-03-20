@@ -45,7 +45,7 @@
         ::-webkit-scrollbar-thumb { background: #d1d1d1; border-radius: 10px; }
     </style>
 </head>
-<body class="pt-32 pb-20">
+<body id="adminBody" class="hidden pt-32 pb-20">
 
     <!-- Management Navigation -->
     <nav class="glass-nav fixed w-full top-0 z-[100] border-b border-stone-200/50">
@@ -210,6 +210,7 @@
             if (!user) {
                 window.location.href = 'login.html';
             } else {
+                document.getElementById('adminBody').classList.remove('hidden');
                 initAdmin();
             }
         });
