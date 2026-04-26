@@ -221,11 +221,10 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebas
 import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
 import { getFirestore, collection, onSnapshot, addDoc, deleteDoc, doc, serverTimestamp, updateDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-const firebaseConfig={apiKey:"AIzaSyA_7UEiQyAoeirIHMNJyBWItEMSrP0aph4",authDomain:"cardeals-97d4d.firebaseapp.com",projectId:"cardeals-97d4d",storageBucket:"cardeals-97d4d.firebasestorage.app",messagingSenderId:"366209464372",appId:"1:366209464372:web:a22349cf521bd583ef7261",measurementId:"G-764VVTY4F7"};
+import { firebaseConfig, IMGBB_KEY } from './config.js';
 const app=initializeApp(firebaseConfig);
 const auth=getAuth(app);const db=getFirestore(app);
 const appId=typeof __app_id!=='undefined'?__app_id:'elite-motors-showroom';
-const IMGBB_KEY='3b12085d09bfcd292248a03afe861e7f';
 
 const FEATURES=['Air Conditioning','AM/FM Radio','Electric Windows','Airbags','Alloy Wheels','Android Auto','Anti-Lock Brakes','Armrests','Blind Spot Monitor','CarPlay','Cruise Control','Cup Holders','Electric Mirrors','Front Fog Lamps','Leather Seats','LED Headlights','Parking Assist','Parking Sensors','Roof Rack','Spotlight','Sunroof','Traction Control','Heated Seats','Ventilated Seats','360° Camera','Reverse Camera','Navigation','Keyless Entry','Push Start','Turbo'];
 

@@ -105,8 +105,8 @@ body{font-family:'Rajdhani',sans-serif;background:var(--bg);color:var(--white);m
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
 import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-const cfg={apiKey:"AIzaSyA_7UEiQyAoeirIHMNJyBWItEMSrP0aph4",authDomain:"cardeals-97d4d.firebaseapp.com",projectId:"cardeals-97d4d",storageBucket:"cardeals-97d4d.firebasestorage.app",messagingSenderId:"366209464372",appId:"1:366209464372:web:a22349cf521bd583ef7261",measurementId:"G-764VVTY4F7"};
-const auth=getAuth(initializeApp(cfg));
+import { firebaseConfig } from './config.js';
+const auth=getAuth(initializeApp(firebaseConfig));
 document.getElementById('loginForm').addEventListener('submit',async e=>{
   e.preventDefault();
   const btn=document.getElementById('loginBtn');
