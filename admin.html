@@ -1,410 +1,368 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EliteHomespace | Portfolio Management</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@200..800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --gold: #d4af37;
-            --ivory: #faf9f6;
-            --onyx: #1a1a1a;
-        }
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EliteMotors | Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--red:#e8212e;--bg:#080808;--s1:#101010;--s2:#1a1a1a;--s3:#222;--gray:#888;--white:#fff}
+body{font-family:'Rajdhani',sans-serif;background:var(--bg);color:var(--white);padding-top:70px}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-thumb{background:var(--red)}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(8,8,8,0.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(232,33,46,0.2)}
+.nav-inner{max-width:1400px;margin:0 auto;padding:0 32px;height:70px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Orbitron',sans-serif;font-size:20px;font-weight:900;letter-spacing:3px;color:var(--white);text-decoration:none}
+.logo span{color:var(--red)}
+.nav-r{display:flex;align-items:center;gap:24px}
+.nav-r a{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gray);text-decoration:none;transition:color .3s}
+.nav-r a:hover{color:var(--red)}
+.nav-badge{font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;border:1px solid var(--s3);color:var(--gray);padding:3px 8px}
+.btn-logout{background:transparent;border:1px solid rgba(232,33,46,0.3);color:var(--red);padding:8px 20px;font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:all .3s}
+.btn-logout:hover{background:var(--red);color:#fff}
+.wrap{max-width:1400px;margin:0 auto;padding:48px 32px}
+.page-head{margin-bottom:40px}
+.page-label{font-size:10px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--red);margin-bottom:8px}
+.page-title{font-family:'Orbitron',sans-serif;font-size:clamp(24px,3vw,40px);font-weight:700;text-transform:uppercase;line-height:1}
+.page-sub{font-size:14px;color:var(--gray);margin-top:8px;font-weight:400}
+.grid{display:grid;grid-template-columns:420px 1fr;gap:24px}
+@media(max-width:1024px){.grid{grid-template-columns:1fr}}
 
-        body { 
-            font-family: 'Plus Jakarta Sans', sans-serif; 
-            background-color: var(--ivory);
-            color: var(--onyx);
-        }
+/* FORM PANEL */
+.panel{background:var(--s1);border:1px solid var(--s3)}
+.panel-head{padding:16px 24px;border-bottom:1px solid var(--s3);display:flex;align-items:center;gap:10px}
+.panel-head i{color:var(--red)}
+.panel-title{font-family:'Orbitron',sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase}
+.form-body{padding:24px;display:flex;flex-direction:column;gap:18px}
+.sec-label{font-size:9px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--red);border-bottom:1px solid var(--s3);padding-bottom:8px;margin-top:4px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.field{display:flex;flex-direction:column;gap:6px}
+.lbl{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gray)}
+.inp{background:var(--s2);border:1px solid var(--s3);color:var(--white);padding:11px 14px;font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:500;outline:none;transition:border-color .3s;width:100%;-webkit-appearance:none;appearance:none}
+.inp:focus{border-color:var(--red)}
+.inp option{background:var(--s2)}
+textarea.inp{resize:vertical;min-height:80px}
 
-        .serif { font-family: 'Playfair Display', serif; }
+/* FEATURES */
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px}
+.feat-cb{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:var(--gray);cursor:pointer;padding:6px 8px;transition:color .3s;border:1px solid transparent}
+.feat-cb:hover{color:var(--white);border-color:var(--s3)}
+.feat-cb input{accent-color:var(--red);width:13px;height:13px;cursor:pointer;flex-shrink:0}
 
-        .admin-input {
-            background: transparent;
-            border-bottom: 1px solid #e2e8f0;
-            padding: 0.75rem 0;
-            outline: none;
-            transition: border-color 0.3s ease;
-        }
+/* IMAGE GRID */
+.img-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.img-slot{height:80px;background:var(--s2);border:1px dashed var(--s3);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:border-color .3s;position:relative;overflow:hidden}
+.img-slot:hover{border-color:var(--red)}
+.img-slot span{font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gray);margin-top:4px}
+.img-slot input{display:none}
+.img-thumb{width:100%;height:100%;object-fit:cover}
+.img-remove{position:absolute;top:4px;right:4px;background:rgba(0,0,0,0.7);border:none;color:#fff;width:20px;height:20px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:9px;transition:background .3s}
+.img-remove:hover{background:var(--red)}
+.upload-progress{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gray);text-align:center;padding:8px 0;display:none}
 
-        .admin-input:focus {
-            border-color: var(--gold);
-        }
+/* SUBMIT */
+.btn-submit{background:var(--red);color:#fff;padding:18px;font-family:'Rajdhani',sans-serif;font-size:12px;font-weight:700;letter-spacing:4px;text-transform:uppercase;border:none;cursor:pointer;width:100%;transition:all .3s;clip-path:polygon(12px 0%,100% 0%,calc(100% - 12px) 100%,0% 100%)}
+.btn-submit:hover{background:#ff4500;box-shadow:0 0 30px rgba(232,33,46,.3)}
+.btn-submit:disabled{opacity:.5;cursor:not-allowed;box-shadow:none}
 
-        .glass-nav {
-            background: rgba(250, 249, 246, 0.8);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-        }
-
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: var(--ivory); }
-        ::-webkit-scrollbar-thumb { background: #d1d1d1; border-radius: 10px; }
-    </style>
+/* INVENTORY */
+.inv-header{display:flex;justify-content:space-between;align-items:center;padding:16px 24px;border-bottom:1px solid var(--s3)}
+.inv-count{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red)}
+.inv-list{display:flex;flex-direction:column}
+.inv-item{display:flex;align-items:center;gap:16px;padding:16px 20px;border-bottom:1px solid var(--s3);transition:background .3s}
+.inv-item:hover{background:var(--s2)}
+.inv-img{width:80px;height:56px;object-fit:cover;flex-shrink:0;filter:grayscale(0.4)}
+.inv-info{flex:1;min-width:0}
+.inv-name{font-family:'Orbitron',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.inv-price{font-size:12px;font-weight:700;color:var(--red);letter-spacing:2px;text-transform:uppercase}
+.inv-meta{display:flex;gap:8px;margin-top:4px;flex-wrap:wrap}
+.inv-tag{font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gray)}
+.inv-actions{display:flex;gap:8px;flex-shrink:0}
+.inv-btn{background:var(--s3);border:none;color:var(--gray);width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;font-size:12px}
+.inv-btn:hover{background:var(--red);color:#fff}
+.inv-btn.wa:hover{background:#25D366}
+.empty-inv{text-align:center;padding:60px 24px;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--s3)}
+.skeleton{animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:.5}50%{opacity:1}}
+</style>
 </head>
-<body id="adminBody" class="hidden pt-32 pb-20">
+<body id="adminBody" style="display:none">
 
-    <!-- Management Navigation -->
-    <nav class="glass-nav fixed w-full top-0 z-[100] border-b border-stone-200/50">
-        <div class="max-w-7xl mx-auto px-8">
-            <div class="flex justify-between h-24 items-center">
-                <div class="flex items-center space-x-2">
-                    <span class="text-2xl font-semibold tracking-[0.3em] uppercase serif italic">Elite<span class="text-[#d4af37] not-italic">Homespace</span></span>
-                    <span class="text-[9px] border border-stone-200 px-2 py-1 ml-4 tracking-widest text-stone-400 uppercase font-bold">Admin</span>
-                </div>
-                <div class="hidden md:flex items-center space-x-8 text-[10px] uppercase tracking-[0.3em] font-bold">
-                    <a href="index.html" class="hover:text-[#d4af37] transition-colors">Showroom</a>
-                    <div class="h-4 w-[1px] bg-stone-300"></div>
-                    <button onclick="logout()" class="text-stone-400 hover:text-red-500 transition-colors flex items-center gap-2">
-                        <i class="fa-solid fa-power-off"></i> Sign Out
-                    </button>
-                </div>
-
-                <!-- Hamburger -->
-                <button onclick="toggleMobileMenu()" class="md:hidden text-2xl text-stone-600 hover:text-[#d4af37] transition-colors">
-                    <i class="fa-solid fa-bars"></i>
-                </button>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="fixed inset-0 bg-[#faf9f6] z-[200] flex flex-col items-center justify-center space-y-10 transform translate-x-full transition-transform duration-500 ease-in-out md:hidden">
-        <button onclick="toggleMobileMenu()" class="absolute top-10 right-10 text-3xl text-stone-400 hover:text-[#d4af37]">
-            <i class="fa-solid fa-xmark"></i>
-        </button>
-        <span class="text-2xl font-semibold tracking-[0.3em] uppercase serif italic mb-4">Elite<span class="text-[#d4af37] not-italic">Homespace</span></span>
-        <a href="index.html" class="text-sm uppercase tracking-[0.3em] font-bold hover:text-[#d4af37]">Showroom</a>
-        <button onclick="logout()" class="text-sm uppercase tracking-[0.3em] font-bold text-red-500">Sign Out</button>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">ELITE<span>MOTORS</span></a>
+    <div class="nav-r">
+      <a href="index.html"><i class="fa-solid fa-arrow-left"></i> Showroom</a>
+      <span class="nav-badge">Admin</span>
+      <button class="btn-logout" onclick="doLogout()"><i class="fa-solid fa-power-off"></i> Sign Out</button>
     </div>
+  </div>
+</nav>
+
+<div class="wrap">
+  <div class="page-head">
+    <p class="page-label">Internal Systems</p>
+    <h1 class="page-title">Fleet Management</h1>
+    <p class="page-sub">Add and manage vehicles. All changes are live in real-time.</p>
+  </div>
+
+  <div class="grid">
+    <!-- FORM -->
+    <div>
+      <div class="panel">
+        <div class="panel-head"><i class="fa-solid fa-plus"></i><span class="panel-title">Add New Vehicle</span></div>
+        <div class="form-body">
+
+          <p class="sec-label">Basic Info</p>
+          <div class="field"><span class="lbl">Condition</span>
+            <select id="cCondition" class="inp"><option value="">Select...</option><option>Foreign Used</option><option>Local Used</option><option>Brand New</option></select>
+          </div>
+          <div class="row2">
+            <div class="field"><span class="lbl">Make</span><input id="cMake" class="inp" placeholder="e.g. Land Rover"></div>
+            <div class="field"><span class="lbl">Model</span><input id="cModel" class="inp" placeholder="e.g. Range Rover"></div>
+          </div>
+          <div class="row2">
+            <div class="field"><span class="lbl">Year</span><input id="cYear" type="number" class="inp" placeholder="2024"></div>
+            <div class="field"><span class="lbl">Trim</span><input id="cTrim" class="inp" placeholder="e.g. Supercharged"></div>
+          </div>
+          <div class="field"><span class="lbl">Price</span><input id="cPrice" class="inp" placeholder="e.g. GHS 450,000"></div>
+
+          <p class="sec-label">Specifications</p>
+          <div class="row2">
+            <div class="field"><span class="lbl">Body Type</span>
+              <select id="cBodyType" class="inp"><option value="">Select...</option><option>SUV</option><option>Sedan</option><option>Coupe</option><option>Truck / Pickup</option><option>Van / Minivan</option><option>Convertible</option><option>Hatchback</option><option>Bus</option></select>
             </div>
-        </div>
-    </nav>
-
-    <main class="max-w-7xl mx-auto px-8">
-        <!-- Header -->
-        <div class="mb-16">
-            <span class="text-[#d4af37] text-[10px] uppercase tracking-[0.6em] font-bold mb-4 block">Internal Systems</span>
-            <h1 class="text-4xl md:text-6xl serif">Portfolio Management</h1>
-            <p class="text-stone-500 mt-4 font-light text-sm max-w-xl">
-                Manage your high-value assets and concierge routing. Changes made here reflect globally in real-time.
-            </p>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-20">
-            <!-- Asset Acquisition Form -->
-            <div class="lg:col-span-4">
-                <div class="bg-white p-10 shadow-2xl shadow-stone-200/50 sticky top-32 border border-stone-100">
-                    <h3 class="serif text-2xl mb-8">New Acquisition</h3>
-                    <div class="space-y-8">
-                        <div class="flex flex-col">
-                            <label class="text-[9px] uppercase tracking-widest text-stone-400 mb-1">Asset Name</label>
-                            <input id="hName" type="text" class="admin-input text-sm" placeholder="The Obsidian Villa">
-                        </div>
-                        <div class="flex flex-col">
-                            <label class="text-[9px] uppercase tracking-widest text-stone-400 mb-1">Market Valuation</label>
-                            <input id="hPrice" type="text" class="admin-input text-sm" placeholder="$12,500,000">
-                        </div>
-                        <div class="grid grid-cols-2 gap-6">
-                            <div class="flex flex-col">
-                                <label class="text-[9px] uppercase tracking-widest text-stone-400 mb-1">Bedrooms</label>
-                                <input id="hBedrooms" type="number" class="admin-input text-sm" placeholder="e.g., 6">
-                            </div>
-                            <div class="flex flex-col">
-                                <label class="text-[9px] uppercase tracking-widest text-stone-400 mb-1">Location</label>
-                                <input id="hLocation" type="text" class="admin-input text-sm" placeholder="e.g., Miami, FL">
-                            </div>
-                        </div>
-                        <div class="flex flex-col">
-                            <label class="text-[9px] uppercase tracking-widest text-stone-400 mb-1">Concierge Number (WhatsApp)</label>
-                            <input id="hWhatsApp" type="text" class="admin-input text-sm" placeholder="233240000000">
-                        </div>
-                        <div class="flex flex-col">
-                            <label class="text-[9px] uppercase tracking-widest text-stone-400 mb-1">Property Narrative</label>
-                            <textarea id="hDesc" rows="3" class="admin-input text-sm resize-none" placeholder="Describe the architectural soul..."></textarea>
-                        </div>
-                        <div class="flex flex-col">
-                            <label class="text-[9px] uppercase tracking-widest text-stone-400 mb-1">Cinematic Tour (Video URL)</label>
-                            <input id="hVideo" type="text" class="admin-input text-sm" placeholder="e.g., https://youtube.com/watch?v=...">
-                        </div>
-                        <div class="flex flex-col mt-4">
-                            <label class="text-[9px] uppercase tracking-widest text-stone-400 mb-2">Visual Media (Up to 5 Images)</label>
-                            <div id="imageGrid" class="grid grid-cols-3 gap-4">
-                                <!-- Add Button -->
-                                <label id="addImageBtn" class="relative flex flex-col items-center justify-center w-full h-24 border-2 border-dashed border-stone-100 cursor-pointer hover:bg-stone-50 transition-colors bg-stone-50 overflow-hidden">
-                                    <div class="text-center">
-                                        <i class="fa-solid fa-plus text-stone-400 mb-1"></i>
-                                        <p class="text-[8px] uppercase tracking-widest text-stone-400">Add Image</p>
-                                    </div>
-                                    <input type="file" id="hImage" class="hidden" accept="image/*" multiple onchange="addImages(this)">
-                                </label>
-                            </div>
-                        </div>
-                        <button id="submitBtn" onclick="saveHouse()" class="w-full bg-[#1a1a1a] text-white py-5 text-[10px] uppercase tracking-[0.4em] font-bold hover:bg-[#d4af37] transition-all">
-                            Authenticate & List
-                        </button>
-                    </div>
-                </div>
+            <div class="field"><span class="lbl">Drivetrain</span>
+              <select id="cDrivetrain" class="inp"><option value="">Select...</option><option>4x4</option><option>AWD</option><option>4WD</option><option>FWD</option><option>RWD</option><option>2WD</option></select>
             </div>
-
-            <!-- Active Inventory -->
-            <div class="lg:col-span-8">
-                <div class="flex justify-between items-center mb-8">
-                    <h3 class="serif text-2xl">Active Collection</h3>
-                    <span id="asset-count" class="text-[10px] uppercase tracking-widest bg-stone-100 px-4 py-1 rounded-full font-bold">0 Assets</span>
-                </div>
-                <div id="adminList" class="space-y-6">
-                    <!-- Loading skeleton -->
-                    <div class="animate-pulse flex items-center gap-8 bg-white p-6 border border-stone-100">
-                        <div class="w-24 h-24 bg-stone-100"></div>
-                        <div class="flex-1 space-y-4">
-                            <div class="h-4 bg-stone-100 w-1/4"></div>
-                            <div class="h-2 bg-stone-100 w-1/6"></div>
-                        </div>
-                    </div>
-                </div>
+          </div>
+          <div class="row2">
+            <div class="field"><span class="lbl">Transmission</span>
+              <select id="cTransmission" class="inp"><option value="">Select...</option><option>Automatic</option><option>Manual</option><option>CVT</option><option>Semi-Automatic</option></select>
             </div>
+            <div class="field"><span class="lbl">Fuel Type</span>
+              <select id="cFuelType" class="inp"><option value="">Select...</option><option>Petrol</option><option>Diesel</option><option>Hybrid</option><option>Electric</option><option>LPG</option></select>
+            </div>
+          </div>
+          <div class="row2">
+            <div class="field"><span class="lbl">Engine Size</span><input id="cEngineSize" class="inp" placeholder="e.g. 5000cc"></div>
+            <div class="field"><span class="lbl">Cylinders</span><input id="cCylinders" type="number" class="inp" placeholder="e.g. 8"></div>
+          </div>
+          <div class="row2">
+            <div class="field"><span class="lbl">Horsepower</span><input id="cHorsepower" class="inp" placeholder="e.g. 518hp"></div>
+            <div class="field"><span class="lbl">Mileage</span><input id="cMileage" class="inp" placeholder="e.g. 12,000 km"></div>
+          </div>
+          <div class="row2">
+            <div class="field"><span class="lbl">Exterior Color</span><input id="cColor" class="inp" placeholder="e.g. Silver"></div>
+            <div class="field"><span class="lbl">Interior Color</span><input id="cInteriorColor" class="inp" placeholder="e.g. Blue"></div>
+          </div>
+          <div class="row3">
+            <div class="field"><span class="lbl">Seats</span><input id="cSeats" class="inp" placeholder="e.g. 5-7"></div>
+            <div class="field"><span class="lbl">Registered?</span>
+              <select id="cRegistered" class="inp"><option value="">Select...</option><option>Yes</option><option>No</option></select>
+            </div>
+            <div class="field"><span class="lbl">Exchange?</span>
+              <select id="cExchange" class="inp"><option value="">Select...</option><option>Yes</option><option>No</option></select>
+            </div>
+          </div>
+
+          <p class="sec-label">Features</p>
+          <div class="feat-grid" id="featGrid"></div>
+
+          <p class="sec-label">Highlights &amp; Description</p>
+          <div class="field"><span class="lbl">Highlights (one per line)</span>
+            <textarea id="cHighlights" class="inp" placeholder="5.0L Supercharged V8&#10;518 hp&#10;Panoramic Sunroof"></textarea>
+          </div>
+          <div class="field"><span class="lbl">Description</span>
+            <textarea id="cDesc" class="inp" placeholder="Additional details about the vehicle..."></textarea>
+          </div>
+
+          <p class="sec-label">Contact &amp; Media</p>
+          <div class="field"><span class="lbl">WhatsApp Number</span><input id="cWhatsApp" class="inp" placeholder="e.g. 233240000000"></div>
+          <div class="field"><span class="lbl">Walk-around Video (YouTube URL)</span><input id="cVideo" class="inp" placeholder="https://youtube.com/watch?v=..."></div>
+
+          <div class="field">
+            <span class="lbl">Photos — uploaded to ImgBB (up to 5)</span>
+            <div class="img-grid" id="imgGrid">
+              <label class="img-slot" id="addImgBtn">
+                <i class="fa-solid fa-plus" style="color:var(--gray);font-size:18px"></i>
+                <span>Add Photo</span>
+                <input type="file" id="fileInput" accept="image/*" multiple onchange="handleFiles(this)">
+              </label>
+            </div>
+            <div class="upload-progress" id="uploadProgress">Uploading images...</div>
+          </div>
+
+          <button id="submitBtn" class="btn-submit" onclick="saveCar()">
+            <i class="fa-solid fa-plus"></i> Add to Fleet
+          </button>
         </div>
-    </main>
+      </div>
+    </div>
 
-    <!-- Firebase SDK -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, collection, onSnapshot, addDoc, deleteDoc, doc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+    <!-- INVENTORY -->
+    <div>
+      <div class="panel">
+        <div class="inv-header">
+          <span class="panel-title" style="font-family:'Orbitron',sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase">Active Fleet</span>
+          <span class="inv-count" id="invCount">0 Vehicles</span>
+        </div>
+        <div class="inv-list" id="invList">
+          <div class="empty-inv skeleton">Loading fleet...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-        const firebaseConfig = {
-          apiKey: "AIzaSyCDx7qEq159vWdRRI2t4UK9dq5ESN9m0zw",
-          authDomain: "realestate-7af59.firebaseapp.com",
-          projectId: "realestate-7af59",
-          storageBucket: "realestate-7af59.firebasestorage.app",
-          messagingSenderId: "462067082872",
-          appId: "1:462067082872:web:fb076c48e80240c327af8d",
-          measurementId: "G-NZGFW35MEV"
-        };
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const db = getFirestore(app);
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'elite-luxury-showroom';
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+import { getFirestore, collection, onSnapshot, addDoc, deleteDoc, doc, serverTimestamp, updateDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        window.toggleMobileMenu = () => {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('translate-x-full');
-            document.body.classList.toggle('overflow-hidden');
-        };
+const firebaseConfig={apiKey:"AIzaSyA_7UEiQyAoeirIHMNJyBWItEMSrP0aph4",authDomain:"cardeals-97d4d.firebaseapp.com",projectId:"cardeals-97d4d",storageBucket:"cardeals-97d4d.firebasestorage.app",messagingSenderId:"366209464372",appId:"1:366209464372:web:a22349cf521bd583ef7261",measurementId:"G-764VVTY4F7"};
+const app=initializeApp(firebaseConfig);
+const auth=getAuth(app);const db=getFirestore(app);
+const appId=typeof __app_id!=='undefined'?__app_id:'elite-motors-showroom';
+const IMGBB_KEY='3b12085d09bfcd292248a03afe861e7f';
 
-        window.logout = async () => {
-            try {
-                await signOut(auth);
-                window.location.href = 'login.html';
-            } catch (err) {
-                console.error("Sign out error", err);
-            }
-        };
+const FEATURES=['Air Conditioning','AM/FM Radio','Electric Windows','Airbags','Alloy Wheels','Android Auto','Anti-Lock Brakes','Armrests','Blind Spot Monitor','CarPlay','Cruise Control','Cup Holders','Electric Mirrors','Front Fog Lamps','Leather Seats','LED Headlights','Parking Assist','Parking Sensors','Roof Rack','Spotlight','Sunroof','Traction Control','Heated Seats','Ventilated Seats','360° Camera','Reverse Camera','Navigation','Keyless Entry','Push Start','Turbo'];
 
-        // Auth Guard
-        onAuthStateChanged(auth, (user) => {
-            if (!user) {
-                window.location.href = 'login.html';
-            } else {
-                document.getElementById('adminBody').classList.remove('hidden');
-                initAdmin();
-            }
-        });
+// Render feature checkboxes
+const fg=document.getElementById('featGrid');
+FEATURES.forEach(f=>{
+  const id='f_'+f.replace(/[^a-zA-Z0-9]/g,'_');
+  fg.innerHTML+=`<label class="feat-cb"><input type="checkbox" id="${id}" value="${f}"><span>${f}</span></label>`;
+});
 
-        let compressedBase64Array = [];
+window.doLogout=async()=>{await signOut(auth);location.href='login.html';};
 
-        // Initialization
-        async function initAdmin() {
-            try {
-                const housesRef = collection(db, 'artifacts', appId, 'public', 'data', 'houses');
-                
-                onSnapshot(housesRef, (snapshot) => {
-                    const houses = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-                    renderAdminList(houses);
-                }, (err) => console.error("Database Error:", err));
-            } catch (err) {
-                console.error("Auth Error:", err);
-                alert("Authentication Failed: " + err.message + ". Please enable Anonymous Auth in Firebase Console.");
-            }
-        }
+onAuthStateChanged(auth,user=>{
+  if(!user){location.href='login.html';return;}
+  document.getElementById('adminBody').style.display='block';
+  const ref=collection(db,'artifacts',appId,'public','data','cars');
+  onSnapshot(ref,snap=>renderList(snap.docs.map(d=>({id:d.id,...d.data()}))));
+});
 
-        // Image Handling
-        // Image Handling with Compression
-        async function compressImage(file, maxWidth = 800) {
-            return new Promise((resolve) => {
-                const reader = new FileReader();
-                reader.readAsDataURL(file);
-                reader.onload = (event) => {
-                    const img = new Image();
-                    img.src = event.target.result;
-                    img.onload = () => {
-                        const canvas = document.createElement('canvas');
-                        const scale = maxWidth / img.width;
-                        canvas.width = maxWidth;
-                        canvas.height = img.height * scale;
-                        const ctx = canvas.getContext('2d');
-                        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-                        resolve(canvas.toDataURL('image/jpeg', 0.7)); // Quality 0.7
-                    };
-                };
-            });
-        }
+let uploadedUrls=[];
 
-        window.addImages = async (input) => {
-            const files = Array.from(input.files);
-            if (compressedBase64Array.length + files.length > 5) {
-                alert("Maximum 5 images allowed.");
-                input.value = "";
-                return;
-            }
+// Upload single image to ImgBB
+async function uploadToImgBB(file){
+  const b64=await fileToBase64(file);
+  const form=new FormData();
+  form.append('key',IMGBB_KEY);
+  form.append('image',b64.split(',')[1]);
+  const res=await fetch('https://api.imgbb.com/1/upload',{method:'POST',body:form});
+  const data=await res.json();
+  if(!data.success)throw new Error('ImgBB upload failed');
+  return data.data.url;
+}
 
-            const btn = document.getElementById('submitBtn');
-            btn.disabled = true;
-            btn.innerText = `Optimizing...`;
+function fileToBase64(file){
+  return new Promise((res,rej)=>{
+    const r=new FileReader();r.readAsDataURL(file);
+    r.onload=e=>res(e.target.result);r.onerror=rej;
+  });
+}
 
-            for (let file of files) {
-                if (compressedBase64Array.length < 5) {
-                    const base64 = await compressImage(file);
-                    compressedBase64Array.push(base64);
-                }
-            }
-            
-            renderImageGrid();
-            btn.disabled = false;
-            btn.innerText = "Authenticate & List";
-            input.value = "";
-        };
+window.handleFiles=async(input)=>{
+  const files=Array.from(input.files);
+  if(uploadedUrls.length+files.length>5){alert('Max 5 photos.');input.value='';return;}
+  const btn=document.getElementById('submitBtn');
+  const prog=document.getElementById('uploadProgress');
+  btn.disabled=true;prog.style.display='block';
+  try{
+    for(let i=0;i<files.length&&uploadedUrls.length<5;i++){
+      prog.textContent=`Uploading photo ${uploadedUrls.length+1} of ${Math.min(files.length,5-uploadedUrls.length+uploadedUrls.length)}...`;
+      const url=await uploadToImgBB(files[i]);
+      uploadedUrls.push(url);
+    }
+    renderImgGrid();
+  }catch(e){alert('Image upload failed: '+e.message);}
+  finally{btn.disabled=false;prog.style.display='none';input.value='';}
+};
 
-        window.removeImage = (index) => {
-            compressedBase64Array.splice(index, 1);
-            renderImageGrid();
-        };
+window.removeImg=i=>{uploadedUrls.splice(i,1);renderImgGrid();};
 
-        function renderImageGrid() {
-            const grid = document.getElementById('imageGrid');
-            const addBtn = document.getElementById('addImageBtn');
-            
-            // Remove existing thumbnails
-            const thumbnails = grid.querySelectorAll('.thumb-wrapper');
-            thumbnails.forEach(t => t.remove());
+function renderImgGrid(){
+  const grid=document.getElementById('imgGrid');
+  const addBtn=document.getElementById('addImgBtn');
+  grid.querySelectorAll('.img-thumb-wrap').forEach(t=>t.remove());
+  uploadedUrls.forEach((url,i)=>{
+    const w=document.createElement('div');
+    w.className='img-slot img-thumb-wrap';w.style.cursor='default';
+    w.innerHTML=`<img src="${url}" class="img-thumb"><button onclick="removeImg(${i})" class="img-remove"><i class="fa-solid fa-x"></i></button>`;
+    grid.insertBefore(w,addBtn);
+  });
+  if(uploadedUrls.length>=5)addBtn.style.display='none';
+  else addBtn.style.display='flex';
+}
 
-            compressedBase64Array.forEach((img, index) => {
-                const wrapper = document.createElement('div');
-                wrapper.className = "thumb-wrapper relative h-24 group bg-stone-100 rounded overflow-hidden shadow-sm";
-                wrapper.innerHTML = `
-                    <img src="${img}" class="w-full h-full object-cover">
-                    <button onclick="removeImage(${index})" class="absolute top-1 right-1 w-5 h-5 bg-black/50 hover:bg-red-500 text-white rounded-full flex items-center justify-center text-[8px] transition-colors">
-                        <i class="fa-solid fa-x"></i>
-                    </button>
-                `;
-                grid.insertBefore(wrapper, addBtn);
-            });
+const gv=id=>document.getElementById(id)?.value?.trim()||'';
 
-            if (compressedBase64Array.length >= 5) {
-                addBtn.classList.add('hidden');
-            } else {
-                addBtn.classList.remove('hidden');
-            }
-        }
+window.saveCar=async()=>{
+  const price=gv('cPrice'),wa=gv('cWhatsApp');
+  if(!price||!uploadedUrls.length||!wa)return alert('Price, at least 1 photo, and WhatsApp are required.');
+  const features=FEATURES.filter(f=>{const el=document.getElementById('f_'+f.replace(/[^a-zA-Z0-9]/g,'_'));return el?.checked;});
+  const name=[gv('cYear'),gv('cMake'),gv('cModel')].filter(Boolean).join(' ')||gv('cMake')||'Vehicle';
+  const btn=document.getElementById('submitBtn');btn.disabled=true;btn.textContent='Saving...';
+  try{
+    await addDoc(collection(db,'artifacts',appId,'public','data','cars'),{
+      name,condition:gv('cCondition'),make:gv('cMake'),model:gv('cModel'),year:gv('cYear'),trim:gv('cTrim'),
+      price,bodyType:gv('cBodyType'),drivetrain:gv('cDrivetrain'),transmission:gv('cTransmission'),
+      fuelType:gv('cFuelType'),engineSize:gv('cEngineSize'),cylinders:gv('cCylinders'),
+      horsepower:gv('cHorsepower'),mileage:gv('cMileage'),color:gv('cColor'),
+      interiorColor:gv('cInteriorColor'),seats:gv('cSeats'),registered:gv('cRegistered'),
+      exchange:gv('cExchange'),features,highlights:gv('cHighlights'),description:gv('cDesc'),
+      video:gv('cVideo'),whatsapp:wa,images:uploadedUrls,createdAt:serverTimestamp()
+    });
+    ['cCondition','cMake','cModel','cYear','cTrim','cPrice','cBodyType','cDrivetrain','cTransmission','cFuelType','cEngineSize','cCylinders','cHorsepower','cMileage','cColor','cInteriorColor','cSeats','cRegistered','cExchange','cHighlights','cDesc','cVideo','cWhatsApp'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+    FEATURES.forEach(f=>{const el=document.getElementById('f_'+f.replace(/[^a-zA-Z0-9]/g,'_'));if(el)el.checked=false;});
+    uploadedUrls=[];renderImgGrid();
+    alert('Vehicle added to fleet!');
+  }catch(e){alert('Error: '+e.message);}
+  finally{btn.disabled=false;btn.innerHTML='<i class="fa-solid fa-plus"></i> Add to Fleet';}
+};
 
-        // Data Management
-        window.saveHouse = async () => {
-            const name = document.getElementById('hName').value;
-            const price = document.getElementById('hPrice').value;
-            const desc = document.getElementById('hDesc').value;
-            const wa = document.getElementById('hWhatsApp').value;
-            const video = document.getElementById('hVideo').value;
-            const location = document.getElementById('hLocation').value;
-            const bedrooms = document.getElementById('hBedrooms').value;
+window.deleteCar=async id=>{if(confirm('Remove this vehicle?'))await deleteDoc(doc(db,'artifacts',appId,'public','data','cars',id));};
 
-            if (!name || !price || compressedBase64Array.length === 0 || !wa) {
-                return alert("Asset documentation incomplete. Name, Price, Media, and WhatsApp are mandatory.");
-            }
+window.toggleSold=async(id,currentStatus)=>{
+  try{
+    await updateDoc(doc(db,'artifacts',appId,'public','data','cars',id),{sold:!currentStatus});
+  }catch(e){alert('Error: '+e.message);}
+};
 
-            const btn = document.getElementById('submitBtn');
-            btn.disabled = true;
-            btn.innerText = "Processing Data...";
-
-            try {
-                // Save directly to Firestore (Bypasses Storage/CORS issues)
-                await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'houses'), {
-                    name, price, description: desc, whatsapp: wa, video: video || "", images: compressedBase64Array, location: location || "", bedrooms: bedrooms || "", createdAt: serverTimestamp()
-                });
-                
-                // Form Reset
-                document.getElementById('hName').value = "";
-                document.getElementById('hPrice').value = "";
-                document.getElementById('hDesc').value = "";
-                document.getElementById('hWhatsApp').value = "";
-                document.getElementById('hVideo').value = "";
-                document.getElementById('hLocation').value = "";
-                document.getElementById('hBedrooms').value = "";
-                compressedBase64Array = [];
-                renderImageGrid();
-            } catch (err) {
-                console.error(err);
-                alert("Acquisition failed. Please verify your Firestore rules.");
-            } finally {
-                btn.disabled = false;
-                btn.innerText = "Authenticate & List";
-            }
-        };
-
-        window.deleteHouse = async (id) => {
-            const confirmed = confirm("Are you sure you wish to remove this asset from the active collection? This action is irreversible.");
-            if (confirmed) {
-                await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'houses', id));
-            }
-        };
-
-        // Rendering Logic
-        function renderAdminList(houses) {
-            const list = document.getElementById('adminList');
-            const countLabel = document.getElementById('asset-count');
-            list.innerHTML = "";
-            countLabel.innerText = `${houses.length} Asset${houses.length !== 1 ? 's' : ''}`;
-
-            if (houses.length === 0) {
-                list.innerHTML = `
-                    <div class="text-center py-20 border border-dashed border-stone-200">
-                        <p class="text-[10px] uppercase tracking-widest text-stone-400">No Active Assets in Portfolio</p>
-                    </div>
-                `;
-                return;
-            }
-
-            houses.forEach(house => {
-                const displayImage = house.images && house.images.length > 0 ? house.images[0] : (house.image || '');
-                const row = document.createElement('div');
-                row.className = "bg-white p-6 border border-stone-100 flex items-center gap-8 group hover:border-stone-300 transition-all";
-                row.innerHTML = `
-                    <img src="${displayImage}" class="w-24 h-24 object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
-                    <div class="flex-1">
-                        <div class="flex items-center gap-4">
-                            <h4 class="serif text-xl">${house.name}</h4>
-                            <span class="text-[8px] border border-stone-100 px-2 py-0.5 tracking-widest text-stone-400 uppercase font-bold">Verified</span>
-                        </div>
-                        <p class="text-[#d4af37] text-[10px] uppercase tracking-widest font-bold mt-1">${house.price}</p>
-                        <p class="text-stone-400 text-[10px] mt-2 italic">Route: wa.me/${house.whatsapp}</p>
-                    </div>
-                    <div class="flex items-center gap-4">
-                         <button onclick="window.open('https://wa.me/${house.whatsapp}', '_blank')" class="text-stone-300 hover:text-[#d4af37] transition-colors p-2">
-                            <i class="fa-brands fa-whatsapp text-lg"></i>
-                        </button>
-                        <button onclick="deleteHouse('${house.id}')" class="text-stone-200 hover:text-red-500 transition-colors p-2">
-                            <i class="fa-solid fa-trash-can"></i>
-                        </button>
-                    </div>
-                `;
-                list.appendChild(row);
-            });
-        }
-
-        window.onload = initAdmin;
-    </script>
+function renderList(cars){
+  const list=document.getElementById('invList');
+  document.getElementById('invCount').textContent=`${cars.length} Vehicle${cars.length!==1?'s':''}`;
+  if(!cars.length){list.innerHTML='<div class="empty-inv">No vehicles in fleet yet</div>';return;}
+  list.innerHTML='';
+  cars.forEach(car=>{
+    const img=car.images?.[0]||'';
+    const isSold=car.sold===true;
+    const row=document.createElement('div');row.className='inv-item';
+    row.innerHTML=`
+      <img src="${img}" class="inv-img" onerror="this.style.display='none'">
+      <div class="inv-info">
+        <p class="inv-name">${car.name||'Unknown'} ${isSold?'<span style="color:var(--red);font-size:10px;margin-left:8px;vertical-align:middle;padding:2px 6px;border:1px solid var(--red)">[SOLD]</span>':''}</p>
+        <p class="inv-price">${car.price||''}</p>
+        <div class="inv-meta">
+          ${car.condition?`<span class="inv-tag">${car.condition}</span>`:''}
+          ${car.bodyType?`<span class="inv-tag">· ${car.bodyType}</span>`:''}
+          ${car.transmission?`<span class="inv-tag">· ${car.transmission}</span>`:''}
+          ${car.fuelType?`<span class="inv-tag">· ${car.fuelType}</span>`:''}
+        </div>
+      </div>
+      <div class="inv-actions">
+        <button onclick="toggleSold('${car.id}', ${isSold})" class="inv-btn" title="${isSold?'Mark Available':'Mark Sold'}"><i class="fa-solid ${isSold?'fa-rotate-left':'fa-tag'}"></i></button>
+        <a href="details.html?id=${car.id}" target="_blank" class="inv-btn" title="Preview"><i class="fa-solid fa-eye"></i></a>
+        <button onclick="window.open('https://wa.me/${car.whatsapp||''}','_blank')" class="inv-btn wa" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></button>
+        <button onclick="deleteCar('${car.id}')" class="inv-btn" title="Delete"><i class="fa-solid fa-trash-can"></i></button>
+      </div>`;
+    list.appendChild(row);
+  });
+}
+</script>
 </body>
 </html>

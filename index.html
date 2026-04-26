@@ -1,371 +1,358 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EliteHomespace | The Luxury Collection</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@200..800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --gold: #d4af37;
-            --ivory: #faf9f6;
-            --onyx: #1a1a1a;
-        }
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EliteMotors | Premium Car Showroom</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--red:#e8212e;--red2:#ff4500;--bg:#080808;--s1:#101010;--s2:#1a1a1a;--s3:#222;--gray:#888;--white:#fff}
+html{scroll-behavior:smooth}
+body{font-family:'Rajdhani',sans-serif;background:var(--bg);color:var(--white);overflow-x:hidden}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-thumb{background:var(--red)}
 
-        body { 
-            font-family: 'Plus Jakarta Sans', sans-serif; 
-            background-color: var(--ivory);
-            color: var(--onyx);
-        }
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(8,8,8,0.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(232,33,46,0.2)}
+.nav-inner{max-width:1400px;margin:0 auto;padding:0 32px;height:70px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Orbitron',sans-serif;font-size:22px;font-weight:900;letter-spacing:3px;color:var(--white);text-decoration:none}
+.logo span{color:var(--red)}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gray);text-decoration:none;transition:color .3s}
+.nav-links a:hover,.nav-links a.active{color:var(--red)}
+.nav-cta{background:var(--red);color:#000;padding:10px 24px;font-size:10px;font-weight:900;letter-spacing:3px;text-transform:uppercase;text-decoration:none;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);transition:all .3s}
+.nav-cta:hover{background:var(--red2)}
+.hamburger{display:none;background:none;border:none;color:var(--white);font-size:22px;cursor:pointer}
 
-        .serif { font-family: 'Playfair Display', serif; }
-        
-        /* Smooth scrolling for anchor links */
-        html { scroll-behavior: smooth; }
+/* HERO */
+.hero{height:100vh;position:relative;overflow:hidden;display:flex;align-items:center}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#080808 0%,#1a0505 50%,#080808 100%)}
+.hero-lines{position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,rgba(232,33,46,0.03) 0px,rgba(232,33,46,0.03) 1px,transparent 1px,transparent 80px),repeating-linear-gradient(0deg,rgba(232,33,46,0.03) 0px,rgba(232,33,46,0.03) 1px,transparent 1px,transparent 80px)}
+.hero-inner{position:relative;z-index:10;width:100%;max-width:1400px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:40px}
+.hero-content{text-align:left}
+.hero-label{font-size:10px;font-weight:700;letter-spacing:6px;text-transform:uppercase;color:var(--red);margin-bottom:20px;display:block}
+.hero-title{font-family:'Orbitron',sans-serif;font-size:clamp(36px,5.5vw,80px);font-weight:900;line-height:0.9;text-transform:uppercase;margin-bottom:24px}
+.hero-title span{color:var(--red);display:block;-webkit-text-stroke:1px var(--red);text-shadow:0 0 40px rgba(232,33,46,0.5)}
+.hero-sub{font-size:15px;font-weight:300;color:var(--gray);letter-spacing:2px;margin-bottom:48px;max-width:420px}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap}
+.btn-primary{background:var(--red);color:#fff;padding:16px 40px;font-family:'Rajdhani',sans-serif;font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;text-decoration:none;clip-path:polygon(12px 0%,100% 0%,calc(100% - 12px) 100%,0% 100%);transition:all .3s;border:none;cursor:pointer;display:inline-block}
+.btn-primary:hover{background:var(--red2);box-shadow:0 0 30px rgba(232,33,46,0.4)}
+.btn-outline{background:transparent;border:1px solid rgba(255,255,255,0.2);color:#fff;padding:16px 40px;font-family:'Rajdhani',sans-serif;font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;text-decoration:none;clip-path:polygon(12px 0%,100% 0%,calc(100% - 12px) 100%,0% 100%);transition:all .3s;cursor:pointer;display:inline-block}
+.btn-outline:hover{border-color:var(--red);color:var(--red)}
+/* HERO CAR IMAGE */
+.hero-car-wrap{position:relative;display:flex;align-items:center;justify-content:center}
+.hero-car-img{width:100%;max-width:640px;object-fit:contain;filter:drop-shadow(0 0 60px rgba(232,33,46,0.35));animation:float 4s ease-in-out infinite;mask-image:linear-gradient(to right,transparent 0%,black 20%,black 80%,transparent 100%);-webkit-mask-image:linear-gradient(to right,transparent 0%,black 20%,black 80%,transparent 100%)}
+@keyframes float{0%,100%{transform:translateY(0) translateX(0)}50%{transform:translateY(-12px) translateX(4px)}}
+.hero-car-glow{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:80%;height:40px;background:radial-gradient(ellipse,rgba(232,33,46,0.4) 0%,transparent 70%);filter:blur(12px)}
+.scroll-ind{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--gray);font-size:9px;letter-spacing:3px;text-transform:uppercase;animation:bounce 2s infinite;z-index:10}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
+/* SOLD CARD */
+.car-card.sold{opacity:.75}
+.car-card.sold .car-img img{filter:grayscale(0.7)}
+.sold-overlay{position:absolute;inset:0;background:rgba(8,8,8,0.5);z-index:4;display:flex;align-items:center;justify-content:center}
+.sold-stamp{font-family:'Orbitron',sans-serif;font-size:28px;font-weight:900;letter-spacing:6px;color:#fff;border:3px solid #fff;padding:8px 20px;transform:rotate(-15deg);text-shadow:0 0 20px rgba(255,255,255,0.5);box-shadow:0 0 30px rgba(0,0,0,0.5)}
+@media(max-width:900px){.hero-inner{grid-template-columns:1fr;text-align:center}.hero-content{text-align:center}.hero-sub{max-width:100%}.hero-btns{justify-content:center}.hero-car-wrap{display:none}}
 
-        /* Luxury Hero Parallax Effect */
-        .hero-section {
-            height: 90vh;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
-                        url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
-            background-attachment: fixed;
-            background-position: center;
-            background-size: cover;
-        }
+/* SECTION */
+.section{max-width:1400px;margin:0 auto;padding:100px 32px}
+.section-header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:60px}
+.section-label{font-size:10px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--red);margin-bottom:12px;display:block}
+.section-title{font-family:'Orbitron',sans-serif;font-size:clamp(28px,4vw,48px);font-weight:700;text-transform:uppercase;line-height:1}
+.section-desc{font-size:14px;color:var(--gray);font-weight:400;max-width:300px;line-height:1.6}
 
-        .glass-nav {
-            background: rgba(250, 249, 246, 0.8);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-        }
+/* FILTERS */
+.filters{background:var(--s1);border:1px solid var(--s3);padding:24px 28px;display:flex;gap:20px;flex-wrap:wrap;align-items:flex-end;margin-bottom:48px}
+.filter-group{flex:1;min-width:200px}
+.filter-label{font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:8px;display:block}
+.filter-input{width:100%;background:var(--s2);border:1px solid var(--s3);color:var(--white);padding:12px 16px;font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:500;outline:none;transition:border-color .3s;-webkit-appearance:none;appearance:none}
+.filter-input:focus,.filter-input:hover{border-color:var(--red)}
+.filter-input option{background:var(--s2)}
 
-        /* Property Card Animations */
-        .property-card {
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        
-        .property-card:hover {
-            transform: translateY(-12px);
-        }
+/* GRID */
+.cars-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:2px}
 
-        .property-image-container img {
-            transition: transform 1.2s scale(1.05);
-        }
+/* CAR CARD */
+.car-card{background:var(--s1);position:relative;overflow:hidden;cursor:pointer;transition:transform .4s cubic-bezier(.16,1,.3,1)}
+.car-card:hover{transform:translateY(-6px)}
+.car-card::before{content:'';position:absolute;inset:0;border:1px solid transparent;transition:border-color .3s;z-index:2;pointer-events:none}
+.car-card:hover::before{border-color:var(--red)}
+.car-img{position:relative;height:240px;overflow:hidden}
+.car-img img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
+.car-card:hover .car-img img{transform:scale(1.08)}
+.car-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,0.8) 0%,transparent 60%)}
+.car-price-badge{position:absolute;top:16px;left:0;background:var(--red);color:#fff;padding:8px 20px 8px 16px;font-family:'Orbitron',sans-serif;font-size:13px;font-weight:700;clip-path:polygon(0 0,100% 0,calc(100% - 10px) 100%,0 100%);z-index:3}
+.car-year-badge{position:absolute;top:16px;right:0;background:rgba(0,0,0,0.7);border:1px solid var(--s3);color:var(--gray);padding:8px 16px;font-size:11px;font-weight:700;letter-spacing:2px;z-index:3}
+.condition-badge{position:absolute;bottom:16px;left:16px;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 10px;background:rgba(232,33,46,0.15);border:1px solid rgba(232,33,46,0.4);color:var(--red);z-index:3}
+.car-body{padding:20px 24px 24px}
+.car-make{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:4px}
+.car-name{font-family:'Orbitron',sans-serif;font-size:17px;font-weight:700;margin-bottom:16px;line-height:1.2;text-transform:uppercase}
+.car-specs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px}
+.spec-tag{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gray);background:var(--s2);padding:5px 10px;border:1px solid var(--s3);display:flex;align-items:center;gap:5px}
+.spec-tag i{color:var(--red);font-size:8px}
+.card-btns{display:grid;grid-template-columns:1fr 1fr;gap:1px}
+.card-btn{padding:13px;font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;border:none;cursor:pointer;transition:all .3s;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:8px}
+.card-btn-primary{background:var(--red);color:#fff}
+.card-btn-primary:hover{background:var(--red2)}
+.card-btn-wa{background:var(--s2);color:var(--white);border:1px solid var(--s3)}
+.card-btn-wa:hover{background:#25D366;border-color:#25D366}
 
-        .property-card:hover img {
-            transform: scale(1.08);
-        }
+/* EMPTY / LOADING */
+.state-box{grid-column:1/-1;text-align:center;padding:80px 24px}
+.state-box i{font-size:48px;color:var(--s3);margin-bottom:20px;display:block}
+.state-box h3{font-family:'Orbitron',sans-serif;font-size:20px;color:var(--s3);text-transform:uppercase;margin-bottom:8px}
+.state-box p{font-size:12px;color:var(--gray);letter-spacing:2px;text-transform:uppercase}
+.spinner{width:40px;height:40px;border:2px solid var(--s3);border-top-color:var(--red);border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 16px}
+@keyframes spin{to{transform:rotate(360deg)}}
 
-        .gold-border-btn {
-            position: relative;
-            overflow: hidden;
-            border: 1px solid var(--gold);
-            color: var(--onyx);
-            transition: color 0.4s ease;
-        }
+/* FOOTER */
+footer{background:var(--s1);border-top:1px solid var(--s3)}
+.footer-inner{max-width:1400px;margin:0 auto;padding:60px 32px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:48px}
+.footer-logo{font-family:'Orbitron',sans-serif;font-size:20px;font-weight:900;letter-spacing:3px;margin-bottom:16px}
+.footer-logo span{color:var(--red)}
+.footer-desc{font-size:13px;color:var(--gray);line-height:1.7;font-weight:400}
+.footer-heading{font-size:9px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--red);margin-bottom:16px}
+.footer-list{list-style:none;display:flex;flex-direction:column;gap:8px}
+.footer-list a{font-size:13px;color:var(--gray);text-decoration:none;transition:color .3s;font-weight:400}
+.footer-list a:hover{color:var(--white)}
+.footer-bottom{border-top:1px solid var(--s3);max-width:1400px;margin:0 auto;padding:24px 32px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.footer-copy{font-size:11px;color:var(--gray);letter-spacing:2px;text-transform:uppercase}
+.social-links{display:flex;gap:16px}
+.social-links a{color:var(--gray);font-size:18px;transition:color .3s;text-decoration:none}
+.social-links a:hover{color:var(--red)}
 
-        .gold-border-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--onyx);
-            transition: left 0.4s ease;
-            z-index: -1;
-        }
+/* MOBILE */
+.mob-menu{position:fixed;inset:0;background:rgba(8,8,8,0.98);z-index:300;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;transform:translateX(100%);transition:transform .5s}
+.mob-menu.open{transform:translateX(0)}
+.mob-close{position:absolute;top:24px;right:24px;background:none;border:none;color:var(--white);font-size:28px;cursor:pointer}
+.mob-menu a{font-family:'Orbitron',sans-serif;font-size:20px;font-weight:700;color:var(--white);text-decoration:none;text-transform:uppercase;letter-spacing:3px}
+.mob-menu a:hover{color:var(--red)}
 
-        .gold-border-btn:hover {
-            color: white;
-            border-color: var(--onyx);
-        }
-
-        .gold-border-btn:hover::before {
-            left: 0;
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: var(--ivory); }
-        ::-webkit-scrollbar-thumb { background: #d1d1d1; border-radius: 10px; }
-    </style>
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hamburger{display:block}
+  .footer-inner{grid-template-columns:1fr}
+  .cars-grid{grid-template-columns:1fr}
+  .hero-title{font-size:clamp(32px,12vw,60px)}
+}
+</style>
 </head>
 <body>
 
-    <!-- Navigation -->
-    <nav class="glass-nav fixed w-full top-0 z-[100] border-b border-stone-200/50">
-        <div class="max-w-7xl mx-auto px-8">
-            <div class="flex justify-between h-24 items-center">
-                <div class="flex items-center space-x-2">
-                    <span class="text-2xl font-semibold tracking-[0.3em] uppercase serif italic">Elite<span class="text-[#d4af37] not-italic">Homespace</span></span>
-                </div>
-                
-                <div class="hidden md:flex items-center space-x-12 text-[10px] uppercase tracking-[0.3em] font-bold">
-                    <a href="index.html" class="hover:text-[#d4af37] transition-colors">Showroom</a>
-                    <a href="contact.html" class="bg-[#1a1a1a] text-white px-8 py-3.5 hover:bg-[#d4af37] transition-all shadow-lg shadow-[#1a1a1a]/10">Contact</a>
-                </div>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">ELITE<span>MOTORS</span></a>
+    <div class="nav-links">
+      <a href="index.html" class="active">Showroom</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <button class="hamburger" onclick="toggleMenu()"><i class="fa-solid fa-bars"></i></button>
+  </div>
+</nav>
 
-                <!-- Hamburger -->
-                <button onclick="toggleMobileMenu()" class="md:hidden text-2xl text-stone-600 hover:text-[#d4af37] transition-colors">
-                    <i class="fa-solid fa-bars"></i>
-                </button>
-            </div>
-        </div>
-    </nav>
+<div class="mob-menu" id="mobMenu">
+  <button class="mob-close" onclick="toggleMenu()"><i class="fa-solid fa-xmark"></i></button>
+  <a href="index.html" onclick="toggleMenu()">Showroom</a>
+  <a href="contact.html" onclick="toggleMenu()">Contact</a>
+</div>
 
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="fixed inset-0 bg-[#faf9f6] z-[200] flex flex-col items-center justify-center space-y-10 transform translate-x-full transition-transform duration-500 ease-in-out md:hidden">
-        <button onclick="toggleMobileMenu()" class="absolute top-10 right-10 text-3xl text-stone-400 hover:text-[#d4af37]">
-            <i class="fa-solid fa-xmark"></i>
-        </button>
-        <span class="text-2xl font-semibold tracking-[0.3em] uppercase serif italic mb-4">Elite<span class="text-[#d4af37] not-italic">Homespace</span></span>
-        <a href="index.html" class="text-sm uppercase tracking-[0.3em] font-bold hover:text-[#d4af37]">Showroom</a>
-        <a href="contact.html" class="text-sm uppercase tracking-[0.3em] font-bold hover:text-[#d4af37]">Contact</a>
-        <div class="pt-10 flex space-x-8 text-stone-400 text-xl">
-            <i class="fa-brands fa-instagram"></i>
-            <i class="fa-brands fa-linkedin-in"></i>
-            <i class="fa-brands fa-x-twitter"></i>
-        </div>
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-lines"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <span class="hero-label">Premium Auto Collection · Ghana</span>
+      <h1 class="hero-title">DRIVE<span>DIFFERENT</span></h1>
+      <p class="hero-sub">Hand-picked luxury and performance vehicles for the discerning driver</p>
+      <div class="hero-btns">
+        <a href="#showroom" class="btn-primary">Browse Fleet</a>
+        <a href="contact.html" class="btn-outline">Contact Us</a>
+      </div>
+    </div>
+    <div class="hero-car-wrap">
+      <img class="hero-car-img" src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?auto=format&fit=crop&w=900&q=80" alt="Featured Car">
+      <div class="hero-car-glow"></div>
+    </div>
+  </div>
+  <div class="scroll-ind"><i class="fa-solid fa-chevron-down"></i><span>Scroll</span></div>
+</section>
+
+<div id="showroom">
+  <div class="section">
+    <div class="section-header">
+      <div>
+        <span class="section-label">Available Now</span>
+        <h2 class="section-title">Our Fleet</h2>
+      </div>
+      <p class="section-desc">Every vehicle inspected and ready. Enquire directly via WhatsApp.</p>
     </div>
 
-    <!-- Cinematic Hero Header -->
-    <header class="hero-section flex items-center justify-center text-center text-white relative">
-        <div class="absolute inset-0 bg-black/40"></div>
-        <div class="relative z-10 px-6 max-w-4xl">
-            <span class="text-[10px] uppercase tracking-[0.6em] mb-6 block font-bold text-[#d4af37]">Established 1984</span>
-            <h1 class="text-5xl md:text-8xl serif mb-8 leading-tight">Define Your Legacy</h1>
-            <p class="text-lg md:text-xl font-light tracking-wide mb-12 opacity-90 max-w-2xl mx-auto italic serif">
-                Curating the world's most exceptional architectural masterpieces for the discerning collector.
-            </p>
-            <a href="#collections" class="inline-block border border-white px-12 py-5 text-[10px] uppercase tracking-[0.4em] font-bold hover:bg-white hover:text-black transition-all">
-                Explore Collections
-            </a>
+    <div class="filters">
+      <div class="filter-group">
+        <span class="filter-label">Search Make / Model</span>
+        <input type="text" id="filterSearch" class="filter-input" placeholder="e.g. Land Rover, BMW...">
+      </div>
+      <div class="filter-group" style="max-width:200px">
+        <span class="filter-label">Body Type</span>
+        <select id="filterType" class="filter-input">
+          <option value="">All Types</option>
+          <option>SUV</option><option>Sedan</option><option>Coupe</option>
+          <option>Truck</option><option>Van</option><option>Convertible</option><option>Hatchback</option>
+        </select>
+      </div>
+      <div class="filter-group" style="max-width:200px">
+        <span class="filter-label">Condition</span>
+        <select id="filterCondition" class="filter-input">
+          <option value="">All</option>
+          <option>Foreign Used</option><option>Local Used</option><option>Brand New</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="cars-grid" id="carsGrid">
+      <div class="state-box">
+        <div class="spinner"></div>
+        <p>Loading Fleet...</p>
+      </div>
+    </div>
+    <div id="emptyState" style="display:none" class="state-box">
+      <i class="fa-solid fa-car"></i>
+      <h3>No Vehicles Found</h3>
+      <p>Try adjusting your filters</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <p class="footer-logo">ELITE<span>MOTORS</span></p>
+      <p class="footer-desc">Premium automotive brokerage connecting the right driver with the right vehicle across Ghana.</p>
+    </div>
+    <div>
+      <p class="footer-heading">Fleet</p>
+      <ul class="footer-list">
+        <li><a href="#">SUVs &amp; Crossovers</a></li>
+        <li><a href="#">Sedans &amp; Coupes</a></li>
+        <li><a href="#">Trucks &amp; Vans</a></li>
+        <li><a href="#">Electric &amp; Hybrid</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-heading">Contact</p>
+      <ul class="footer-list">
+        <li><a href="contact.html">WhatsApp Us</a></li>
+        <li><a href="contact.html">Visit Showroom</a></li>
+        <li><a href="login.html">Admin Portal</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2024 EliteMotors · All Rights Reserved</p>
+    <div class="social-links">
+      <a href="#"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+      <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+    </div>
+  </div>
+</footer>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+import { getFirestore, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey:"AIzaSyA_7UEiQyAoeirIHMNJyBWItEMSrP0aph4",authDomain:"cardeals-97d4d.firebaseapp.com",
+  projectId:"cardeals-97d4d",storageBucket:"cardeals-97d4d.firebasestorage.app",
+  messagingSenderId:"366209464372",appId:"1:366209464372:web:a22349cf521bd583ef7261",measurementId:"G-764VVTY4F7"
+};
+const app=initializeApp(firebaseConfig);
+const auth=getAuth(app);const db=getFirestore(app);
+const appId=typeof __app_id!=='undefined'?__app_id:'elite-motors-showroom';
+let allCars=[];
+
+window.toggleMenu=()=>{document.getElementById('mobMenu').classList.toggle('open');document.body.style.overflow=document.getElementById('mobMenu').classList.contains('open')?'hidden':''};
+
+async function init(){
+  try{ await signInAnonymously(auth); }
+  catch(e){ console.warn('Anonymous auth not enabled or failed:',e.message); }
+  try{
+    const ref=collection(db,'artifacts',appId,'public','data','cars');
+    onSnapshot(ref,snap=>{
+      allCars=snap.docs.map(d=>({id:d.id,...d.data()}));
+      applyFilters();
+    }, err=>{ console.error('Firestore read error:',err.message); });
+  }catch(e){ console.error('Failed to connect to database:',e.message); }
+}
+
+window.applyFilters=()=>{
+  const s=document.getElementById('filterSearch').value.toLowerCase();
+  const t=document.getElementById('filterType').value.toLowerCase();
+  const c=document.getElementById('filterCondition').value.toLowerCase();
+  renderCars(allCars.filter(car=>{
+    const nm=(car.name||'').toLowerCase();
+    return(!s||nm.includes(s))&&(!t||(car.bodyType||'').toLowerCase().includes(t))&&(!c||(car.condition||'').toLowerCase().includes(c));
+  }));
+};
+['filterSearch','filterType','filterCondition'].forEach(id=>document.getElementById(id).addEventListener('input',applyFilters));
+document.getElementById('filterType').addEventListener('change',applyFilters);
+document.getElementById('filterCondition').addEventListener('change',applyFilters);
+
+window.openWA=(car)=>{
+  const url=window.location.href.replace('index.html','')+`details.html?id=${car.id}`;
+  const lines=[`*Vehicle Enquiry via EliteMotors*`,``,`*Car:* ${car.name}`,`*Price:* ${car.price}`];
+  if(car.condition)lines.push(`*Condition:* ${car.condition}`);
+  if(car.year)lines.push(`*Year:* ${car.year}`);
+  if(car.transmission)lines.push(`*Transmission:* ${car.transmission}`);
+  if(car.fuelType)lines.push(`*Fuel:* ${car.fuelType}`);
+  if(car.mileage)lines.push(`*Mileage:* ${car.mileage}`);
+  lines.push(``,`*View:* ${url}`,``,`_I am interested. Please contact me._`);
+  window.open(`https://wa.me/${(car.whatsapp||'').replace(/\D/g,'')}?text=${encodeURIComponent(lines.join('\n'))}`,'_blank');
+};
+
+function renderCars(cars){
+  const grid=document.getElementById('carsGrid');
+  const empty=document.getElementById('emptyState');
+  grid.innerHTML='';
+  if(!cars.length){empty.style.display='block';return;}
+  empty.style.display='none';
+  cars.forEach(car=>{
+    const img=car.images?.[0]||'';
+    const isSold=car.sold===true;
+    const card=document.createElement('div');
+    card.className='car-card'+(isSold?' sold':'');
+    card.innerHTML=`
+      <div class="car-img">
+        <img src="${img}" alt="${car.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/400x240/101010/e8212e?text=NO+IMAGE'">
+        ${isSold?'<div class="sold-overlay"><div class="sold-stamp">SOLD</div></div>':''}
+        <div class="car-price-badge">${isSold?'SOLD':car.price||'POA'}</div>
+        ${car.year?`<div class="car-year-badge">${car.year}</div>`:''}
+        ${car.condition?`<div class="condition-badge">${car.condition}</div>`:''}
+      </div>
+      <div class="car-body">
+        <p class="car-make">${car.make||''}</p>
+        <h3 class="car-name">${car.model||car.name||'Unknown'}</h3>
+        <div class="car-specs">
+          ${car.bodyType?`<span class="spec-tag"><i class="fa-solid fa-car"></i>${car.bodyType}</span>`:''}
+          ${car.transmission?`<span class="spec-tag"><i class="fa-solid fa-gears"></i>${car.transmission}</span>`:''}
+          ${car.fuelType?`<span class="spec-tag"><i class="fa-solid fa-gas-pump"></i>${car.fuelType}</span>`:''}
+          ${car.mileage?`<span class="spec-tag"><i class="fa-solid fa-gauge-high"></i>${car.mileage}</span>`:''}
+          ${car.drivetrain?`<span class="spec-tag"><i class="fa-solid fa-circle-nodes"></i>${car.drivetrain}</span>`:''}
+          ${car.engineSize?`<span class="spec-tag"><i class="fa-solid fa-bolt"></i>${car.engineSize}</span>`:''}
         </div>
-        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-50">
-            <i class="fa-solid fa-chevron-down text-xl"></i>
+        <div class="card-btns">
+          ${isSold
+            ?`<div class="card-btn" style="background:var(--s3);color:var(--gray);grid-column:1/-1;cursor:default"><i class="fa-solid fa-ban"></i> This vehicle has been sold</div>`
+            :`<a href="details.html?id=${car.id}" class="card-btn card-btn-primary"><i class="fa-solid fa-eye"></i> View Details</a>
+             <button onclick='openWA(${JSON.stringify(car).replace(/'/g,"&apos;")})' class="card-btn card-btn-wa"><i class="fa-brands fa-whatsapp"></i> WhatsApp</button>`
+          }
         </div>
-    </header>
+      </div>`;
+    grid.appendChild(card);
+  });
+}
 
-    <!-- Curated Property Gallery Section -->
-    <section id="collections" class="max-w-7xl mx-auto px-8 py-32">
-        <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
-            <div class="max-w-xl">
-                <span class="text-[#d4af37] text-[10px] uppercase tracking-[0.4em] font-bold mb-4 block">Summer Portfolio</span>
-                <h2 class="text-4xl md:text-6xl serif">Architectural Icons</h2>
-            </div>
-            <p class="text-stone-500 font-light max-w-xs text-sm leading-relaxed">
-                Each listing is hand-vetted for its unique heritage, unparalleled craftsmanship, and investment potential.
-            </p>
-        </div>
-
-        <!-- Elite Filters -->
-        <div class="bg-white p-6 md:p-8 mb-16 border border-stone-100 shadow-sm flex flex-col md:flex-row gap-6 items-end">
-            <div class="flex-1 w-full">
-                <label class="text-[9px] uppercase tracking-widest text-stone-400 mb-3 block font-bold">Search Location</label>
-                <div class="relative">
-                    <i class="fa-solid fa-location-dot absolute left-5 top-1/2 -translate-y-1/2 text-stone-300"></i>
-                    <input type="text" id="filterLocation" placeholder="e.g. Miami, Beverly Hills..." class="w-full bg-stone-50 border-b-2 border-transparent focus:border-[#d4af37] py-4 pl-12 pr-4 text-sm outline-none transition-colors">
-                </div>
-            </div>
-            <div class="md:w-64 w-full">
-                <label class="text-[9px] uppercase tracking-widest text-stone-400 mb-3 block font-bold">Exact Bedrooms</label>
-                <div class="relative">
-                    <i class="fa-solid fa-bed absolute left-4 top-1/2 -translate-y-1/2 text-stone-300"></i>
-                    <input type="number" id="filterBedrooms" placeholder="e.g. 4" class="w-full bg-stone-50 border-b-2 border-transparent focus:border-[#d4af37] py-4 pl-12 pr-4 text-sm outline-none transition-colors">
-                </div>
-            </div>
-        </div>
-
-        <!-- Dynamic Grid -->
-        <div id="showroomGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
-            <!-- Loading State Placeholder -->
-            <div class="col-span-full text-center py-20 opacity-50">
-                <div class="inline-block w-8 h-8 border-2 border-stone-200 border-t-[#d4af37] rounded-full animate-spin mb-4"></div>
-                <p class="uppercase tracking-widest text-[10px]">Initializing Gallery...</p>
-            </div>
-        </div>
-
-        <!-- Empty State (Hidden by default) -->
-        <div id="emptyState" class="hidden text-center py-40">
-            <h3 class="serif text-3xl text-stone-300">The Vault is Temporarily Closed</h3>
-            <p class="text-stone-400 mt-4 uppercase tracking-[0.2em] text-[10px]">New acquisitions coming soon</p>
-        </div>
-    </section>
-
-    <!-- Refined Footer -->
-    <footer class="bg-[#1a1a1a] text-white py-24 px-8 mt-20">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-20">
-            <div>
-                <span class="text-xl serif italic tracking-widest block mb-8 uppercase">Elite<span class="text-[#d4af37] not-italic">Homespace</span></span>
-                <p class="text-stone-400 font-light text-sm leading-relaxed mb-4">
-                    A global leader in high-value asset brokerage. Dedicated to discretion, excellence, and the art of fine living.
-                </p>
-                <div class="flex items-center gap-3 text-stone-300 text-sm font-light">
-                    <i class="fa-solid fa-phone text-[#d4af37]"></i>
-                    <a href="tel:+233543290219" class="hover:text-white transition-colors">+233 54 329 0219</a>
-                </div>
-            </div>
-            <div class="space-y-4">
-                <h4 class="text-[10px] uppercase tracking-[0.4em] font-bold text-[#d4af37]">Global Offices</h4>
-                <p class="text-stone-400 text-sm font-light">Accra, Ghana</p>
-                <p class="text-stone-400 text-sm font-light">Mayfair, London</p>
-                <p class="text-stone-400 text-sm font-light">Emaar Sq, Dubai</p>
-            </div>
-            <div class="space-y-6">
-                <h4 class="text-[10px] uppercase tracking-[0.4em] font-bold text-[#d4af37]">Stay Informed</h4>
-                <div class="flex border-b border-stone-700 pb-2">
-                    <input type="email" placeholder="Email Address" class="bg-transparent outline-none w-full text-sm font-light">
-                    <button class="text-[10px] uppercase tracking-widest">Join</button>
-                </div>
-            </div>
-        </div>
-        <div class="max-w-7xl mx-auto mt-20 pt-8 border-t border-stone-800 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p class="text-stone-500 text-[10px] uppercase tracking-widest">© 2024 Elite Homespace International. All Rights Reserved.</p>
-            <div class="flex space-x-8 text-stone-500 text-lg">
-                <i class="fa-brands fa-instagram hover:text-[#d4af37] cursor-pointer transition-colors"></i>
-                <i class="fa-brands fa-linkedin-in hover:text-[#d4af37] cursor-pointer transition-colors"></i>
-                <i class="fa-brands fa-x-twitter hover:text-[#d4af37] cursor-pointer transition-colors"></i>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Firebase Integration -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, collection, onSnapshot, query } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-
-        // Configuration
-        const firebaseConfig = {
-          apiKey: "AIzaSyCDx7qEq159vWdRRI2t4UK9dq5ESN9m0zw",
-          authDomain: "realestate-7af59.firebaseapp.com",
-          projectId: "realestate-7af59",
-          storageBucket: "realestate-7af59.firebasestorage.app",
-          messagingSenderId: "462067082872",
-          appId: "1:462067082872:web:fb076c48e80240c327af8d",
-          measurementId: "G-NZGFW35MEV"
-        };
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const db = getFirestore(app);
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'elite-luxury-showroom';
-
-        let allHouses = [];
-
-        // Connect and Listen
-        async function connectShowroom() {
-            try {
-                await signInAnonymously(auth);
-                const housesRef = collection(db, 'artifacts', appId, 'public', 'data', 'houses');
-                
-                onSnapshot(housesRef, (snapshot) => {
-                    allHouses = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-                    applyFilters();
-                }, (err) => console.error("Snapshot error:", err));
-            } catch (err) {
-                console.error("Auth error:", err);
-            }
-        }
-
-        window.applyFilters = () => {
-            const term = document.getElementById('filterLocation').value.toLowerCase();
-            const minBeds = parseInt(document.getElementById('filterBedrooms').value, 10) || 0;
-
-            const filtered = allHouses.filter(h => {
-                const locMatch = !term || (h.location && h.location.toLowerCase().includes(term));
-                let beds = 0;
-                if (h.bedrooms) {
-                    beds = parseInt(h.bedrooms, 10) || 0;
-                }
-                const bedMatch = minBeds === 0 || (beds === minBeds);
-                return locMatch && bedMatch;
-            });
-
-            renderGallery(filtered);
-        };
-
-        window.toggleMobileMenu = () => {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('translate-x-full');
-            document.body.classList.toggle('overflow-hidden');
-        };
-        
-        // Listeners
-        document.getElementById('filterLocation').addEventListener('input', applyFilters);
-        document.getElementById('filterBedrooms').addEventListener('change', applyFilters);
-
-        // WhatsApp Concierge Logic
-        window.openConcierge = (house) => {
-            const baseUrl = window.location.href.split('?')[0].replace('index.html', '');
-            const houseUrl = `${baseUrl}details.html?id=${house.id}`;
-            const message = `*Inquiry via EliteHomespace Showroom*\n\n*Asset:* ${house.name}\n*Valuation:* ${house.price}\n*Details:* ${house.description}\n\n*View Online:* ${houseUrl}\n\n_I would like to schedule a private viewing._`;
-            const waUrl = `https://wa.me/${house.whatsapp.replace(/\D/g,'')}?text=${encodeURIComponent(message)}`;
-            window.open(waUrl, '_blank');
-        };
-
-        function renderGallery(houses) {
-            const grid = document.getElementById('showroomGrid');
-            const empty = document.getElementById('emptyState');
-            grid.innerHTML = "";
-
-            if (houses.length === 0) {
-                grid.classList.add('hidden');
-                empty.classList.remove('hidden');
-                return;
-            }
-
-            grid.classList.remove('hidden');
-            empty.classList.add('hidden');
-
-            houses.forEach(house => {
-                const card = document.createElement('div');
-                card.className = "property-card group bg-white border border-stone-100 shadow-sm overflow-hidden flex flex-col";
-                card.innerHTML = `
-                    <div class="property-image-container relative h-[500px] overflow-hidden">
-                        <a href="details.html?id=${house.id}">
-                            <img src="${house.images && house.images.length > 0 ? house.images[0] : (house.image || '')}" class="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0" alt="${house.name}">
-                        </a>
-                        <div class="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-all"></div>
-                        <div class="absolute top-8 left-0 bg-[#1a1a1a] text-white py-2 px-6 text-[10px] tracking-[0.4em] font-bold uppercase shadow-2xl">
-                            ${house.price}
-                        </div>
-                    </div>
-                    <div class="p-10 text-center flex-grow flex flex-col">
-                        <span class="text-[9px] uppercase tracking-[0.5em] text-[#d4af37] font-bold mb-4 block">New Acquisition</span>
-                        <h3 class="text-3xl serif mb-4 group-hover:italic transition-all duration-500">${house.name}</h3>
-                        ${house.location ? `<p class="text-stone-500 text-xs tracking-widest uppercase mb-6"><i class="fa-solid fa-location-dot mr-2 text-stone-300"></i>${house.location}</p>` : ''}
-                        
-                        ${house.bedrooms ? `
-                        <div class="flex justify-center items-center py-6 border-t border-b border-stone-100 mb-8 mt-2">
-                            <div class="text-center group-hover:scale-105 transition-transform duration-500">
-                                <span class="text-[#d4af37] text-4xl block font-bold serif leading-none mb-2">${house.bedrooms}</span>
-                                <span class="text-[9px] uppercase tracking-[0.4em] text-stone-400 font-bold">Bedrooms</span>
-                            </div>
-                        </div>
-                        ` : ''}
-                        
-                        <p class="text-stone-400 font-light text-sm leading-relaxed mb-10 line-clamp-2 px-4">
-                            ${house.description}
-                        </p>
-                        <div class="mt-auto flex flex-col gap-3">
-                            <a href="details.html?id=${house.id}" class="bg-[#1a1a1a] text-white py-5 text-[10px] uppercase tracking-[0.4em] font-bold z-10 hover:bg-[#d4af37] transition-all block text-center">
-                                Explore Asset
-                            </a>
-                            <button onclick='openConcierge(${JSON.stringify(house).replace(/'/g, "&apos;")})' 
-                                class="gold-border-btn w-full py-4 text-[9px] uppercase tracking-[0.4em] font-bold z-10">
-                                Connect with Concierge
-                            </button>
-                        </div>
-                    </div>
-                `;
-                grid.appendChild(card);
-            });
-        }
-
-        window.onload = connectShowroom;
-    </script>
+window.onload=init;
+</script>
 </body>
 </html>

@@ -1,163 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EliteHomespace | Connect With Us</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@200..800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --gold: #d4af37;
-            --ivory: #faf9f6;
-            --onyx: #1a1a1a;
-        }
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EliteMotors | Contact Us</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--red:#e8212e;--bg:#080808;--s1:#101010;--s2:#1a1a1a;--s3:#222;--gray:#888;--white:#fff}
+body{font-family:'Rajdhani',sans-serif;background:var(--bg);color:var(--white);padding-top:70px}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-thumb{background:var(--red)}
 
-        body { 
-            font-family: 'Plus Jakarta Sans', sans-serif; 
-            background-color: var(--ivory);
-            color: var(--onyx);
-        }
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(8,8,8,0.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(232,33,46,0.2)}
+.nav-inner{max-width:1400px;margin:0 auto;padding:0 32px;height:70px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Orbitron',sans-serif;font-size:20px;font-weight:900;letter-spacing:3px;color:var(--white);text-decoration:none}
+.logo span{color:var(--red)}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gray);text-decoration:none;transition:color .3s}
+.nav-links a:hover,.nav-links a.active{color:var(--red)}
+.nav-cta{background:var(--red);color:#000;padding:10px 24px;font-size:10px;font-weight:900;letter-spacing:3px;text-transform:uppercase;text-decoration:none;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);transition:all .3s}
+.nav-cta:hover{background:#ff4500;color:#000}
+.hamburger{display:none;background:none;border:none;color:var(--white);font-size:22px;cursor:pointer}
+.mob-menu{position:fixed;inset:0;background:rgba(8,8,8,0.98);z-index:300;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;transform:translateX(100%);transition:transform .5s}
+.mob-menu.open{transform:translateX(0)}
+.mob-close{position:absolute;top:24px;right:24px;background:none;border:none;color:var(--white);font-size:28px;cursor:pointer}
+.mob-menu a{font-family:'Orbitron',sans-serif;font-size:18px;font-weight:700;color:var(--white);text-decoration:none;text-transform:uppercase;letter-spacing:3px}
 
-        .serif { font-family: 'Playfair Display', serif; }
-        
-        .glass-nav {
-            background: rgba(250, 249, 246, 0.8);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-        }
+.bg-fx{position:fixed;inset:0;background:radial-gradient(ellipse at center,rgba(232,33,46,0.05) 0%,transparent 70%);z-index:-1}
 
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: var(--ivory); }
-        ::-webkit-scrollbar-thumb { background: #d1d1d1; border-radius: 10px; }
-    </style>
+.page-back-btn{position:absolute;top:90px;left:32px;z-index:20;color:var(--white);font-size:16px;width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:var(--s1);border:1px solid var(--s3);border-radius:50%;transition:all .3s;text-decoration:none}
+.page-back-btn:hover{background:var(--red);border-color:var(--red);transform:translateX(-4px)}
+
+.wrap{max-width:1200px;margin:0 auto;padding:64px 32px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+@media(max-width:900px){
+  .wrap{grid-template-columns:1fr;gap:40px}
+  .nav-links{display:none}
+  .hamburger{display:block}
+}
+
+.page-head{margin-bottom:40px}
+.page-label{font-size:10px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--red);margin-bottom:8px}
+.page-title{font-family:'Orbitron',sans-serif;font-size:clamp(32px,4vw,56px);font-weight:900;text-transform:uppercase;line-height:1;margin-bottom:16px}
+.page-sub{font-size:16px;color:var(--gray);font-weight:400;max-width:400px;line-height:1.6}
+
+.contact-card{background:var(--s1);border:1px solid var(--s3);padding:40px;position:relative;overflow:hidden}
+.contact-card::after{content:'';position:absolute;bottom:0;right:0;width:100px;height:100px;border-right:1px solid rgba(232,33,46,0.2);border-bottom:1px solid rgba(232,33,46,0.2)}
+.contact-group{margin-bottom:32px}
+.contact-group:last-child{margin-bottom:0}
+.c-lbl{font-size:9px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--red);margin-bottom:8px;display:block}
+.c-val{font-family:'Orbitron',sans-serif;font-size:24px;font-weight:700;color:var(--white)}
+.c-text{font-size:14px;color:var(--gray);line-height:1.6}
+
+.wa-btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;background:#25D366;color:#fff;padding:16px 32px;font-family:'Rajdhani',sans-serif;font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:all .3s;clip-path:polygon(12px 0%,100% 0%,calc(100% - 12px) 100%,0% 100%);margin-top:16px}
+.wa-btn:hover{background:#1da851;box-shadow:0 0 30px rgba(37,211,102,.3)}
+.wa-btn i{font-size:20px}
+
+.map-wrap{height:400px;background:var(--s2);border:1px solid var(--s3);position:relative;filter:grayscale(1) contrast(1.2) brightness(0.8);transition:filter .5s}
+.map-wrap:hover{filter:grayscale(0.5) contrast(1.1) brightness(0.9)}
+.map-wrap iframe{width:100%;height:100%;border:none}
+
+footer{background:var(--s1);border-top:1px solid var(--s3);padding:32px;text-align:center;font-size:11px;color:var(--gray);letter-spacing:2px;text-transform:uppercase;margin-top:60px}
+footer span{color:var(--red)}
+</style>
 </head>
-<body class="pt-24 pb-20">
+<body>
+<div class="bg-fx"></div>
 
-    <!-- Navigation -->
-    <nav class="glass-nav fixed w-full top-0 z-[100] border-b border-stone-200/50">
-        <div class="max-w-7xl mx-auto px-8">
-            <div class="flex justify-between h-24 items-center">
-                <a href="index.html" class="flex items-center space-x-2">
-                    <span class="text-2xl font-semibold tracking-[0.3em] uppercase serif italic">Elite<span class="text-[#d4af37] not-italic">Homespace</span></span>
-                </a>
-                
-                <div class="hidden md:flex items-center space-x-12 text-[10px] uppercase tracking-[0.3em] font-bold">
-                    <a href="index.html" class="hover:text-[#d4af37] transition-colors">Showroom</a>
-                    <a href="contact.html" class="bg-[#1a1a1a] text-white px-8 py-3.5 hover:bg-[#d4af37] transition-all shadow-lg shadow-[#1a1a1a]/10">Contact</a>
-                </div>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">ELITE<span>MOTORS</span></a>
+    <div class="nav-links">
+      <a href="index.html">Showroom</a>
+      <a href="contact.html" class="active">Contact</a>
+    </div>
+    <button class="hamburger" onclick="toggleMenu()"><i class="fa-solid fa-bars"></i></button>
+  </div>
+</nav>
 
-                <!-- Hamburger -->
-                <button onclick="toggleMobileMenu()" class="md:hidden text-2xl text-stone-600 hover:text-[#d4af37] transition-colors">
-                    <i class="fa-solid fa-bars"></i>
-                </button>
-            </div>
-        </div>
-    </nav>
+<div class="mob-menu" id="mobMenu">
+  <button class="mob-close" onclick="toggleMenu()"><i class="fa-solid fa-xmark"></i></button>
+  <a href="index.html">Showroom</a><a href="contact.html">Contact</a>
+</div>
 
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="fixed inset-0 bg-[#faf9f6] z-[200] flex flex-col items-center justify-center space-y-10 transform translate-x-full transition-transform duration-500 ease-in-out md:hidden">
-        <button onclick="toggleMobileMenu()" class="absolute top-10 right-10 text-3xl text-stone-400 hover:text-[#d4af37]">
-            <i class="fa-solid fa-xmark"></i>
-        </button>
-        <span class="text-2xl font-semibold tracking-[0.3em] uppercase serif italic mb-4">Elite<span class="text-[#d4af37] not-italic">Homespace</span></span>
-        <a href="index.html" class="text-sm uppercase tracking-[0.3em] font-bold hover:text-[#d4af37]">Showroom</a>
-        <a href="contact.html" class="text-sm uppercase tracking-[0.3em] font-bold hover:text-[#d4af37]">Contact</a>
-        <div class="pt-10 flex space-x-8 text-stone-400 text-xl">
-            <i class="fa-brands fa-instagram"></i>
-            <i class="fa-brands fa-linkedin-in"></i>
-            <i class="fa-brands fa-x-twitter"></i>
-        </div>
+<a href="index.html" class="page-back-btn" title="Back to Showroom"><i class="fa-solid fa-arrow-left"></i></a>
+
+<div class="wrap">
+  <div>
+    <div class="page-head">
+      <p class="page-label">Connect With Us</p>
+      <h1 class="page-title">Direct Enquiry</h1>
+      <p class="page-sub">Looking for a specific vehicle, or want to enquire about a listing? Our team is ready to help you find your perfect drive.</p>
     </div>
 
-    <main class="max-w-7xl mx-auto px-8 py-24">
-        <!-- Header -->
-        <div class="mb-16 text-center max-w-3xl mx-auto">
-            <span class="text-[#d4af37] text-[10px] uppercase tracking-[0.6em] font-bold mb-4 block">Our Offices</span>
-            <h1 class="text-4xl md:text-6xl serif mb-6">Connect With EliteHomespace</h1>
-            <p class="text-stone-500 font-light text-sm leading-relaxed">
-                Whether you are looking to acquire a new luxury asset, or seeking an appraisal for your expansive estate, our concierge advisors are ready to assist you securely.
-            </p>
-        </div>
+    <div class="contact-card">
+      <div class="contact-group">
+        <span class="c-lbl">Direct Contact</span>
+        <p class="c-val">+233 54 329 0219</p>
+        <a href="tel:+233543290219" class="wa-btn" style="background:var(--red);margin-bottom:12px;display:inline-flex"><i class="fa-solid fa-phone"></i> Call Now</a><br>
+        <a href="https://wa.me/233543290219" target="_blank" class="wa-btn"><i class="fa-brands fa-whatsapp"></i> WhatsApp Us</a>
+      </div>
+      <div class="contact-group">
+        <span class="c-lbl">Showroom Location</span>
+        <p class="c-text">EliteMotors Dealership<br>Greater Accra Region<br>Ghana</p>
+      </div>
+    </div>
+  </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            <!-- Contact Details -->
-            <div class="p-12 bg-white border border-stone-100 shadow-sm flex flex-col justify-center space-y-10">
-                <div>
-                    <h3 class="serif text-2xl mb-2">Direct Advisory</h3>
-                    <p class="text-stone-400 text-sm font-light mb-6">Reach out strictly confidentially directly via WhatsApp or Phone to our primary luxury routing center.</p>
-                    
-                    <a href="tel:+233543290219" class="flex items-center gap-6 group">
-                        <div class="w-12 h-12 bg-stone-50 rounded-full flex items-center justify-center group-hover:bg-[#d4af37] transition-colors">
-                            <i class="fa-solid fa-phone text-stone-400 group-hover:text-white transition-colors"></i>
-                        </div>
-                        <div>
-                            <p class="text-[10px] uppercase tracking-widest text-stone-400 font-bold">Private Telephone</p>
-                            <p class="text-xl serif text-stone-800">+233 54 329 0219</p>
-                        </div>
-                    </a>
-                </div>
+  <div class="map-wrap">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127072.06201625902!2d-0.271370830748123!3d5.591208722806283!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf9084b2b7a773%3A0xbed14ed8650e2dd3!2sAccra%2C%20Ghana!5e0!3m2!1sen!2sus!4v1710928731175!5m2!1sen!2sus" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+</div>
 
-                <div class="pt-8 border-t border-stone-100">
-                    <h3 class="serif text-2xl mb-2">Accra Global Headquarters</h3>
-                    <p class="text-stone-400 text-sm font-light leading-loose">
-                        EliteHomespace Collection Vault<br>
-                        Greater Accra Region<br>
-                        Ghana
-                    </p>
-                </div>
-            </div>
-
-            <!-- Map Wrap -->
-            <div class="bg-stone-100 h-[500px] shadow-sm overflow-hidden flex items-center justify-center p-2 border border-stone-200">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127072.06201625902!2d-0.271370830748123!3d5.591208722806283!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf9084b2b7a773%3A0xbed14ed8650e2dd3!2sAccra%2C%20Ghana!5e0!3m2!1sen!2sus!4v1710928731175!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-        </div>
-    </main>
-
-    <!-- Refined Footer -->
-    <footer class="bg-[#1a1a1a] text-white py-24 px-8 mt-20">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-20">
-            <div>
-                <span class="text-xl serif italic tracking-widest block mb-8 uppercase">Elite<span class="text-[#d4af37] not-italic">Homespace</span></span>
-                <p class="text-stone-400 font-light text-sm leading-relaxed mb-4">
-                    A global leader in high-value asset brokerage. Dedicated to discretion, excellence, and the art of fine living.
-                </p>
-                <div class="flex items-center gap-3 text-stone-300 text-sm font-light">
-                    <i class="fa-solid fa-phone text-[#d4af37]"></i>
-                    <a href="tel:+233543290219" class="hover:text-white transition-colors">+233 54 329 0219</a>
-                </div>
-            </div>
-            <div class="space-y-4">
-                <h4 class="text-[10px] uppercase tracking-[0.4em] font-bold text-[#d4af37]">Global Offices</h4>
-                <p class="text-stone-400 text-sm font-light">Accra, Ghana</p>
-                <p class="text-stone-400 text-sm font-light">Mayfair, London</p>
-                <p class="text-stone-400 text-sm font-light">Emaar Sq, Dubai</p>
-            </div>
-            <div class="space-y-6">
-                <h4 class="text-[10px] uppercase tracking-[0.4em] font-bold text-[#d4af37]">Stay Informed</h4>
-                <div class="flex border-b border-stone-700 pb-2">
-                    <input type="email" placeholder="Email Address" class="bg-transparent outline-none w-full text-sm font-light">
-                    <button class="text-[10px] uppercase tracking-widest">Join</button>
-                </div>
-            </div>
-        </div>
-        <div class="max-w-7xl mx-auto mt-20 pt-8 border-t border-stone-800 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p class="text-stone-500 text-[10px] uppercase tracking-widest">© 2024 Elite Homespace International. All Rights Reserved.</p>
-            <div class="flex space-x-8 text-stone-500 text-lg">
-                <i class="fa-brands fa-instagram hover:text-[#d4af37] cursor-pointer transition-colors"></i>
-                <i class="fa-brands fa-linkedin-in hover:text-[#d4af37] cursor-pointer transition-colors"></i>
-                <i class="fa-brands fa-x-twitter hover:text-[#d4af37] cursor-pointer transition-colors"></i>
-            </div>
-        </div>
-    </footer>
-    <script>
-        window.toggleMobileMenu = () => {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('translate-x-full');
-            document.body.classList.toggle('overflow-hidden');
-        };
-    </script>
+<footer>© 2024 <span>ELITE</span>MOTORS · All Rights Reserved</footer>
+<script>
+window.toggleMenu=()=>{document.getElementById('mobMenu').classList.toggle('open')};
+</script>
 </body>
 </html>

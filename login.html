@@ -1,122 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EliteHomespace | Secure Portal</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@200..800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --gold: #d4af37;
-            --ivory: #faf9f6;
-            --onyx: #1a1a1a;
-        }
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EliteMotors | Admin Portal</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--red:#e8212e;--bg:#080808;--s1:#101010;--s2:#1a1a1a;--s3:#222;--gray:#888;--white:#fff}
+body{font-family:'Rajdhani',sans-serif;background:var(--bg);color:var(--white);min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-thumb{background:var(--red)}
 
-        body { 
-            font-family: 'Plus Jakarta Sans', sans-serif; 
-            background-color: var(--ivory);
-            color: var(--onyx);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-image: radial-gradient(circle at 2px 2px, #e5e7eb 1px, transparent 0);
-            background-size: 40px 40px;
-        }
+/* BG EFFECT */
+.bg{position:fixed;inset:0;background:radial-gradient(ellipse at center,rgba(232,33,46,0.08) 0%,transparent 70%),linear-gradient(135deg,#080808,#0d0505 50%,#080808)}
+.grid-lines{position:fixed;inset:0;background-image:repeating-linear-gradient(90deg,rgba(232,33,46,0.04) 0,rgba(232,33,46,0.04) 1px,transparent 1px,transparent 80px),repeating-linear-gradient(0deg,rgba(232,33,46,0.04) 0,rgba(232,33,46,0.04) 1px,transparent 1px,transparent 80px)}
+.speed-lines{position:fixed;inset:0;overflow:hidden;pointer-events:none}
+.speed-line{position:absolute;height:1px;background:linear-gradient(90deg,transparent,rgba(232,33,46,0.3),transparent);animation:speed 3s linear infinite}
+.speed-line:nth-child(1){top:20%;width:200px;left:-200px;animation-delay:0s;animation-duration:2.5s}
+.speed-line:nth-child(2){top:40%;width:300px;left:-300px;animation-delay:.8s;animation-duration:3s}
+.speed-line:nth-child(3){top:65%;width:150px;left:-150px;animation-delay:1.5s;animation-duration:2s}
+.speed-line:nth-child(4){top:80%;width:250px;left:-250px;animation-delay:.3s;animation-duration:3.5s}
+@keyframes speed{to{transform:translateX(120vw)}}
 
-        .serif { font-family: 'Playfair Display', serif; }
-        
-        .login-card {
-            background: white;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
-            border: 1px solid rgba(212, 175, 55, 0.1);
-        }
+/* CARD */
+.card{position:relative;z-index:10;width:100%;max-width:440px;padding:0 24px}
+.card-inner{background:var(--s1);border:1px solid var(--s3);padding:48px 40px;position:relative;overflow:hidden}
+.card-inner::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--red),transparent)}
+.card-inner::after{content:'';position:absolute;bottom:0;right:0;width:80px;height:80px;border-right:1px solid rgba(232,33,46,0.2);border-bottom:1px solid rgba(232,33,46,0.2)}
 
-        .admin-input {
-            background: transparent;
-            border-bottom: 1px solid #e2e8f0;
-            padding: 0.75rem 0;
-            outline: none;
-            transition: border-color 0.3s ease;
-        }
+.brand{font-family:'Orbitron',sans-serif;font-size:22px;font-weight:900;letter-spacing:4px;text-align:center;margin-bottom:8px}
+.brand span{color:var(--red)}
+.brand-divider{width:40px;height:2px;background:var(--red);margin:0 auto 32px;position:relative}
+.brand-divider::before,.brand-divider::after{content:'';position:absolute;top:-3px;width:6px;height:8px;background:var(--red)}
+.brand-divider::before{left:-8px}
+.brand-divider::after{right:-8px}
 
-        .admin-input:focus {
-            border-color: var(--gold);
-        }
-    </style>
+.card-icon{text-align:center;margin-bottom:24px}
+.card-icon i{font-size:40px;color:var(--s3)}
+.card-title{font-family:'Orbitron',sans-serif;font-size:18px;font-weight:700;text-align:center;text-transform:uppercase;letter-spacing:3px;margin-bottom:6px}
+.card-sub{font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gray);text-align:center;margin-bottom:36px}
+
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:20px}
+.lbl{font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red)}
+.inp-wrap{position:relative}
+.inp-wrap i{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--gray);font-size:13px}
+.inp{width:100%;background:var(--s2);border:1px solid var(--s3);color:var(--white);padding:14px 14px 14px 42px;font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:500;outline:none;transition:border-color .3s}
+.inp:focus{border-color:var(--red)}
+.inp::placeholder{color:var(--gray)}
+
+.err-box{background:rgba(232,33,46,0.08);border:1px solid rgba(232,33,46,0.3);color:var(--red);padding:12px 16px;font-size:12px;font-weight:600;letter-spacing:1px;margin-bottom:20px;display:none;text-align:center}
+
+.btn-login{width:100%;background:var(--red);color:#fff;padding:18px;font-family:'Rajdhani',sans-serif;font-size:12px;font-weight:700;letter-spacing:4px;text-transform:uppercase;border:none;cursor:pointer;clip-path:polygon(12px 0%,100% 0%,calc(100% - 12px) 100%,0% 100%);transition:all .3s;display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:24px}
+.btn-login:hover{background:#ff4500;box-shadow:0 0 40px rgba(232,33,46,.3)}
+.btn-login:disabled{opacity:.5;cursor:not-allowed;box-shadow:none}
+
+.back-link{display:block;text-align:center;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gray);text-decoration:none;transition:color .3s}
+.back-link:hover{color:var(--red)}
+.back-link i{margin-right:6px}
+</style>
 </head>
 <body>
+<div class="bg"></div>
+<div class="grid-lines"></div>
+<div class="speed-lines">
+  <div class="speed-line"></div>
+  <div class="speed-line"></div>
+  <div class="speed-line"></div>
+  <div class="speed-line"></div>
+</div>
 
-    <div class="w-full max-w-md px-8 py-12 login-card rounded-sm text-center">
-        <div class="mb-10">
-            <span class="text-2xl font-semibold tracking-[0.3em] uppercase serif italic">Elite<span class="text-[#d4af37] not-italic">Homespace</span></span>
-            <div class="h-px w-12 bg-[#d4af37] mx-auto mt-4"></div>
+<div class="card">
+  <div class="card-inner">
+    <p class="brand">ELITE<span>MOTORS</span></p>
+    <div class="brand-divider"></div>
+    <div class="card-icon"><i class="fa-solid fa-car-side"></i></div>
+    <h1 class="card-title">Admin Portal</h1>
+    <p class="card-sub">Authorized Personnel Only</p>
+
+    <form id="loginForm">
+      <div class="field">
+        <span class="lbl">Email Address</span>
+        <div class="inp-wrap">
+          <i class="fa-solid fa-envelope"></i>
+          <input id="email" type="email" class="inp" placeholder="admin@elitemotors.com" required>
         </div>
-
-        <h2 class="serif text-3xl mb-4">Secure Portal</h2>
-        <p class="text-[10px] uppercase tracking-widest text-stone-400 font-bold mb-10">Authorized Personnel Only</p>
-
-        <form id="loginForm" class="space-y-8 text-left">
-            <div class="flex flex-col">
-                <label class="text-[9px] uppercase tracking-widest text-stone-400 mb-1">Email Address</label>
-                <input id="email" type="email" class="admin-input text-sm" placeholder="concierge@elitehomespace.com" required>
-            </div>
-            <div class="flex flex-col">
-                <label class="text-[9px] uppercase tracking-widest text-stone-400 mb-1">Access Key</label>
-                <input id="password" type="password" class="admin-input text-sm" placeholder="••••••••" required>
-            </div>
-
-            <button type="submit" id="loginBtn" class="w-full bg-[#1a1a1a] text-white py-5 text-[10px] uppercase tracking-[0.4em] font-bold hover:bg-[#d4af37] transition-all mt-6 shadow-xl shadow-[#1a1a1a]/10">
-                Authenticate Access
-            </button>
-        </form>
-
-        <div class="mt-12">
-            <a href="index.html" class="text-[9px] uppercase tracking-widest text-stone-400 hover:text-black transition-colors">
-                <i class="fa-solid fa-arrow-left mr-2"></i> Return to Showroom
-            </a>
+      </div>
+      <div class="field">
+        <span class="lbl">Password</span>
+        <div class="inp-wrap">
+          <i class="fa-solid fa-lock"></i>
+          <input id="password" type="password" class="inp" placeholder="••••••••" required>
         </div>
-    </div>
+      </div>
+      <div class="err-box" id="errBox"></div>
+      <button type="submit" id="loginBtn" class="btn-login">
+        <i class="fa-solid fa-lock"></i> Authenticate Access
+      </button>
+    </form>
 
-    <!-- Firebase SDK -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Return to Showroom</a>
+  </div>
+</div>
 
-        const firebaseConfig = {
-          apiKey: "AIzaSyCDx7qEq159vWdRRI2t4UK9dq5ESN9m0zw",
-          authDomain: "realestate-7af59.firebaseapp.com",
-          projectId: "realestate-7af59",
-          storageBucket: "realestate-7af59.firebasestorage.app",
-          messagingSenderId: "462067082872",
-          appId: "1:462067082872:web:fb076c48e80240c327af8d",
-          measurementId: "G-NZGFW35MEV"
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-
-        document.getElementById('loginForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            const btn = document.getElementById('loginBtn');
-
-            btn.disabled = true;
-            btn.innerText = "VERIFYING CREDENTIALS...";
-
-            try {
-                await signInWithEmailAndPassword(auth, email, password);
-                window.location.href = 'admin.html';
-            } catch (error) {
-                console.error("Login failed:", error);
-                alert("Access Denied: " + error.message);
-                btn.disabled = false;
-                btn.innerText = "AUTHENTICATE ACCESS";
-            }
-        });
-    </script>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+const cfg={apiKey:"AIzaSyA_7UEiQyAoeirIHMNJyBWItEMSrP0aph4",authDomain:"cardeals-97d4d.firebaseapp.com",projectId:"cardeals-97d4d",storageBucket:"cardeals-97d4d.firebasestorage.app",messagingSenderId:"366209464372",appId:"1:366209464372:web:a22349cf521bd583ef7261",measurementId:"G-764VVTY4F7"};
+const auth=getAuth(initializeApp(cfg));
+document.getElementById('loginForm').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const btn=document.getElementById('loginBtn');
+  const err=document.getElementById('errBox');
+  err.style.display='none';
+  btn.disabled=true;btn.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i> Verifying...';
+  try{
+    await signInWithEmailAndPassword(auth,document.getElementById('email').value,document.getElementById('password').value);
+    location.href='admin.html';
+  }catch(ex){
+    err.textContent='Access denied. Invalid credentials.';err.style.display='block';
+    btn.disabled=false;btn.innerHTML='<i class="fa-solid fa-lock"></i> Authenticate Access';
+  }
+});
+</script>
 </body>
 </html>
